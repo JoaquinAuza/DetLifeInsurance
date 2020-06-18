@@ -1,0 +1,14 @@
+Package: DetLifeInsurance
+Type: Package
+Title: Life Insurance Premium and Reserves Valuation
+Version: 0.1.0
+Author: c(
+    person("Joaquin", "Auza", email = "auzajoaquin@gmail.com", role = "aut","cre"),
+    person("Maria Sol", "Alvarez", email = "alvarezmmsol@gmail.com", role = "aut"))
+Maintainer: Joaquin Auza <auzajoaquin@gmail.com>
+Description: Methods for valuation of life insurance premiums and reserves (including variable-benefit and fractional coverages). It also contains functions for 
+    equivalent interest/discount rate calculation, present and future values of annuities, and loan ammortization schedule.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
