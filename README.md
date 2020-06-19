@@ -1,7 +1,7 @@
 # DetLifeInsurance
 
 DetLifeInsurance is an R package designed to provide tools for: 
-- Deterministic valuation of life insurance and life annuities premiums and actuarial reserves (both constant and variable amounts supported).
+- Deterministic valuation of actuarial reserves and life insurance and annuities premiums (both constant and variable amounts supported).
 - Applying fractional age assumptions to life tables, and generating new ones based on mortality laws. 
 - Calculation of equivalent interest-discount rates as well as future and present value of annuities.
 - Calculation of loan amortization schedule.
