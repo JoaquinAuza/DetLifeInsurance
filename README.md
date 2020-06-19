@@ -38,8 +38,8 @@ In this example, we obtain the value of the actuarial reserve for a life insuran
 
 LI <- A.(x=30, h=0, n=5, i = 0.035, data=CSO80MANB, cap = 100000) 
 Prem <- a(x=30, h=0, n=1, k=12, i=0.035, data=CSO80MANB, assumption="UDD")
-Net_Premium<-LI/Prem
-Net_Premium_monthly=Net_Premium/12
+Net_Premium <- LI/Prem
+Net_Premium_monthly <- Net_Premium/12
 
 V_A.(px=Net_Premium_monthly, x=30, h=0, n=5, k = 1, cantprem = 12,
      premperyear = 12, i = 0.035, data=CSO80MANB, assumption = "UDD", 
@@ -53,3 +53,5 @@ Work in progress!
 - [ ] Enhance documentation.
 - [ ] Better error handling.
 - [ ] New functions: group insurance, stochastic valuation?...
+
+
