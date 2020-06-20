@@ -25,13 +25,12 @@
 #'
 
 
-
 V_A.<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumption="none",cap,t){
   options(digits = 15)
   reserve<-c()
   res<-0
   rown<-c()
-  if(px>0 && x>=0 && is.integer(x)==1 && h>=0 && is.integer(h)==1 && n>0 && is.integer(n)==1 && k>=1 && is.integer(k)==1 && cantprem>=1 && is.integer(cantprem)==1 && premperyear>=1 && premperyear<=12 && is.integer(premperyear)==1 && i>=0 && prop>0 && cap>0){
+  if(px>0 && x>=0 && is_integer(x)==1 && h>=0 && is_integer(h)==1 && n>0 && is_integer(n)==1 && k>=1 && is_integer(k)==1 && cantprem>=1 && is_integer(cantprem)==1 && premperyear>=1 && premperyear<=12 && is_integer(premperyear)==1 && i>=0 && prop>0 && cap>0){
     if(k==1 && premperyear==1){
       if(t<=(n+h)){
         for(j in 1:t){
@@ -102,6 +101,3 @@ V_A.<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumpti
   }
   return(as.data.frame(reserve))
 }
-
-
-

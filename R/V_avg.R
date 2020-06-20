@@ -36,7 +36,6 @@ V_avg<-function(px,x,h,n,k=1,r,cantprem=1,premperyear=1,i=0.04,data,prop=1,assum
   res<-0
   rown<-c()
   if(px>0 && x>=0 && is_integer(x)==1 && h>=0 && is_integer(h)==1 && n>0 && is_integer(n)==1 && k>=1 && is_integer(k)==1 && cantprem>=1 && is_integer(cantprem)==1 && premperyear>=1 && premperyear<=12 && is_integer(premperyear)==1 && i>=0 && prop>0 && cap>0){
-    if(k==1){
     if(k==1 && premperyear==1){
       if(t<=(h+n)){
         for(j in 1:t){
@@ -58,7 +57,6 @@ V_avg<-function(px,x,h,n,k=1,r,cantprem=1,premperyear=1,i=0.04,data,prop=1,assum
       }
       colnames(reserve)<-c("Premium","Risk","E","Reserve")
       rownames(reserve)<-rown
-    }else if(k>1 && k<=12 && is_integer(k)){
     }else if(k<=12){
       if(t<=(h+n)*12){
         Premiums_Paid<-0

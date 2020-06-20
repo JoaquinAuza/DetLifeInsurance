@@ -1,6 +1,6 @@
 #' @title  Reserve Valuation for Varying Life Insurance: Geometric Progression
 
-#' @description Calculates the reserve for the Varying Life Insurance up to the moment t.
+#' @description Calculates the reserve for the varying life insurance up to the moment t.
 #' @param px A numeric value. The value of the premium paid in each period.
 #' @param x An integer. The age of the insuree.
 #' @param h An integer. The deferral period.
@@ -35,7 +35,7 @@ V_Avg.<-function(px,x,h,n,k=1,r,cantprem=1,premperyear=1,i=0.04,data,prop=1,assu
   reserve<-c()
   res<-0
   rown<-c()
-  if(px>0 && x>=0 && is.integer(x)==1 && h>=0 && is.integer(h)==1 && n>0 && is.integer(n)==1 && k>=1 && is.integer(k)==1 && cantprem>=1 && is.integer(cantprem)==1 && premperyear>=1 && premperyear<=12 && is.integer(premperyear)==1 && i>=0 && prop>0 && cap>0){
+  if(px>0 && x>=0 && is_integer(x)==1 && h>=0 && is_integer(h)==1 && n>0 && is_integer(n)==1 && k>=1 && is_integer(k)==1 && cantprem>=1 && is_integer(cantprem)==1 && premperyear>=1 && premperyear<=12 && is_integer(premperyear)==1 && i>=0 && prop>0 && cap>0){
     if(k==1 && premperyear==1){
       if(t<=(h+n)){
         for(j in 1:t){
