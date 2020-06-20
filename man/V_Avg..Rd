@@ -57,7 +57,7 @@ V_Avg.(
 A data frame with Premium, Risk, 1/E and reserve values up to the moment t.
 }
 \description{
-Calculates the reserve for the Varying Life Insurance up to the moment t.
+Calculates the reserve for the varying life insurance up to the moment t.
 }
 \examples{
 V_Avg.(170.113596880528,20,2,2,1,0.05,2,1,0.04,CSO80MANB,1,"none","none",100000,4)

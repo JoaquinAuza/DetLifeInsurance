@@ -55,15 +55,18 @@ V_av(
 }
 \value{
 A data frame with Premium, Risk, 1/E and reserve values up to the moment t.
+}
+\description{
+Calculates the reserve for the Varying Life Annuity up to the moment t.
+}
+\examples{
 V_av(9435943.49607651,20,2,2,1,0.05,2,1,0.04,CSO80MANB,1,"none","none",10000000,4)
 V_av(9516712.17583443/12,20,2,2,2,0.05,24,12,0.04,CSO80MANB,1,"constant","inter",10000000,48)
 V_av(9517.04683383614/12,20,2,2,2,0.05,24,12,0.04,CSO80MANB,1,"UDD","inter",10000,48)
 V_av(997.404109454868/12,20,2,2,2,0.05,24,12,0.04,CSO80MANB,1,"constant","intra",1000,48)
 V_av(997436.738989113/12,20,2,2,2,0.05,24,12,0.04,CSO80MANB,1,"UDD","intra",1000000,48)
 V_av(28.4421691213902,40,3,7,2,0.7,1,1,0.04,CSO80MANB,1,"UDD","intra",1,120)
-}
-\description{
-Calculates the reserve for the Varying Life Annuity up to the moment t.
+
 }
 \references{
 Chapter 5 of  Life Contingencies (1952) by Jordan, Chapter 11 of  Actuarial Mathematics for Life Contingent Risks (2009) by Dickson, Hardy and Waters.

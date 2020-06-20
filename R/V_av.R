@@ -20,6 +20,7 @@
 #' @references Chapter 5 of  Life Contingencies (1952) by Jordan, Chapter 11 of  Actuarial Mathematics for Life Contingent Risks (2009) by Dickson, Hardy and Waters.
 #' @keywords Reserve Varying Life Annuities Arithmetic Progression
 #' @return A data frame with Premium, Risk, 1/E and reserve values up to the moment t.
+#' @examples
 #' V_av(9435943.49607651,20,2,2,1,0.05,2,1,0.04,CSO80MANB,1,"none","none",10000000,4)
 #' V_av(9516712.17583443/12,20,2,2,2,0.05,24,12,0.04,CSO80MANB,1,"constant","inter",10000000,48)
 #' V_av(9517.04683383614/12,20,2,2,2,0.05,24,12,0.04,CSO80MANB,1,"UDD","inter",10000,48)
@@ -35,7 +36,7 @@ V_av<-function(px,x,h,n,k=1,r,cantprem=1,premperyear=1,i=0.04,data,prop=1,assump
   res<-0
   rown<-c()
   if(px>0 && x>=0 && is_integer(x)==1 && h>=0 && is_integer(h)==1 && n>0 && is_integer(n)==1 && k>=1 && is_integer(k)==1 && cantprem>=1 && is_integer(cantprem)==1 && premperyear>=1 && premperyear<=12 && is_integer(premperyear)==1 && i>=0 && prop>0 && cap>0){
-    if(k==1){
+    if(k==1 && premperyear==1){
       if(t<=(h+n)){
         for(j in 1:t){
           risk<-0
@@ -56,7 +57,7 @@ V_av<-function(px,x,h,n,k=1,r,cantprem=1,premperyear=1,i=0.04,data,prop=1,assump
       } else{
         stop("Check Period")
       }
-    }else if(k>1 && k<=12 && is_integer(k)){
+    }else if(k<=12){
       if(t<=(h+n)*12){
         Premiums_Paid<-0
         frac<-1
@@ -127,4 +128,3 @@ V_av<-function(px,x,h,n,k=1,r,cantprem=1,premperyear=1,i=0.04,data,prop=1,assump
   }
   return(as.data.frame(reserve))
 }
-
