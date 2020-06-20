@@ -27,7 +27,7 @@ to a male of age 30, using an interest rate of 3.5%.
 #library(DetLifeInsurance)
 
 LI <- A.(x=30, h=0, n=5, i = 0.035, data=CSO80MANB, cap = 100000) #Actuarial PV of the LI
-Prem <- a(x=30, h=0, n=5, k=12, i=0.035, data=CSO80MANB)
+Prem <- a(x=30, h=0, n=5, k=12, i=0.035, data=CSO80MANB , assumption="UDD")
 Net_Premium <- LI/Prem #Net premium to be paid at the begining of each year
 ```
 ## Example #2
