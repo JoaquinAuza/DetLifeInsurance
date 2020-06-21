@@ -7,7 +7,7 @@
 sf(l = 0, n, i)
 }
 \arguments{
-\item{l}{1 for annuity due or 0 for annuity immediate.}
+\item{l}{0 for annuity due or 1 for annuity immediate.}
 
 \item{n}{A numeric value. The number of payments.}
 

@@ -1,7 +1,7 @@
 #' @title  Future Value of an Annuity
 
 #' @description Calculates the future value  of an annuity.
-#' @param l  1 for annuity due or 0 for annuity immediate.
+#' @param l  0 for annuity due or 1 for annuity immediate.
 #' @param n A numeric value. The number of payments.
 #' @param i A numeric value. The interest rate.
 #' @export
