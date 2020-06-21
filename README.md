@@ -23,12 +23,16 @@ devtools::install_github("JoaquinAuza/DetLifeInsurance")
 In this example, we obtain the annual net premium of a life insurance coverage of $100000 for a term of 5 years, issued
 to a male of age 30, using an interest rate of 3.5%.
 
-```{r example2}
+```{r example1}
 #library(DetLifeInsurance)
 
 LI <- A.(x=30, h=0, n=5, i = 0.035, data=CSO80MANB, cap = 100000) #Actuarial PV of the LI
-Prem <- a(x=30, h=0, n=5, k=12, i=0.035, data=CSO80MANB , assumption="UDD")
+Prem <- a(x=30, h=0, n=5, k=1, i=0.035, data=CSO80MANB , assumption="UDD")
 Net_Premium <- LI/Prem #Net premium to be paid at the begining of each year
+
+#The same result can be achieved by using PremiumFrac()
+
+Net_Premium <-PremiumFrac(px1=LI, x=30,m=5,i=0.035,k=1,data=CSO80MANB)
 ```
 ## Example #2
 In this example, we obtain the value of the actuarial reserve for a life insurance coverage where the insuree pays monthly premiums during the first year. UDD assumption is used. 
@@ -37,8 +41,8 @@ In this example, we obtain the value of the actuarial reserve for a life insuran
 #library(DetLifeInsurance)
 
 LI <- A.(x=30, h=0, n=5, i = 0.035, data=CSO80MANB, cap = 100000) 
-Prem <- a(x=30, h=0, n=1, k=12, i=0.035, data=CSO80MANB, assumption="UDD")
-Net_Premium <- LI/Prem
+
+Net_Premium <- PremiumFrac(px1=LI,x=30,m=1,k=12,i=0.035,data= CSO80MANB,assumption = "UDD")
 Net_Premium_monthly <- Net_Premium/12
 
 V_A.(px=Net_Premium_monthly, x=30, h=0, n=5, k = 1, cantprem = 12,
@@ -50,8 +54,8 @@ V_A.(px=Net_Premium_monthly, x=30, h=0, n=5, k = 1, cantprem = 12,
 Work in progress!
 
 - [x] Basic functionality.
-- [ ] Enhance documentation.
+- [x] Enhance documentation.
 - [ ] Better error handling.
-- [ ] New functions: group insurance, stochastic valuation?...
+- [ ] New functions: group insurance, loan insurance reserve, stochastic valuation?...
 
 
