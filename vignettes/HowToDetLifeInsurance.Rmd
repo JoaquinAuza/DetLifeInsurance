@@ -1,10 +1,14 @@
 ---
-title: "DetLifeInsurance"
+title: "HowToDetLifeInsurance"
 author: "Joaquin Auza & Maria Sol Alvarez"
 date: "21/6/2020"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{HowToDetLifeInsurance}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  
 ---
-
 
 
 DetLifeInsurance is an R package designed to provide tools for:
@@ -185,7 +189,7 @@ Payment_Protection(x=35,n=15,V0=1050000,i=0.05,ip=0.055,data=CSO58MALB,type="out
 ```
 
 ```{r}
-Payment_Protection(x=30,n=10,k=2,V0=1000000,i=0.035,ip=0.06,data=CSO80FANB,type="payments",method="constant_instalment") #Acturial present value of the coverage
+Payment_Protection(x=30,n=10,k=2,V0=1000000,i=0.035,ip=0.06,data=CSO80FANB,type="payments",method="constant_instalment") #actuarial present value of the coverage
 ```
 
 

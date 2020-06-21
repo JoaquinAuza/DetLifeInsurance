@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Joaquin Auza &amp; Maria Sol Alvarez" />
+
+
+<title>HowToDetLifeInsurance</title>
+
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">HowToDetLifeInsurance</h1>
+<h4 class="author">Joaquin Auza &amp; Maria Sol Alvarez</h4>
+<h4 class="date">21/6/2020</h4>
+
+
+
+<p>DetLifeInsurance is an R package designed to provide tools for:</p>
+<ul>
+<li>Deterministic valuation of actuarial reserves and life insurance and annuities premiums (both constant and variable amounts supported).</li>
+<li>Applying fractional age assumptions to life tables, and generating new ones based on mortality laws.</li>
+<li>Calculation of equivalent interest-discount rates as well as future and present value of annuities.</li>
+<li>Calculation of loan amortization schedule.</li>
+</ul>
+<p>In addition, 47 commonly used mortality tables are included as data.</p>
+<div id="life-insurance-and-annuities-premiums" class="section level2">
+<h2>Life insurance and annuities premiums</h2>
+<p>For calculating the actuarial present value:</p>
+<ul>
+<li><p>Pure Endowment: <code>E(x, n, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code></p></li>
+<li><p>Life Insurance:</p>
+<ul>
+<li>Life insurance: <code>A.(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code></li>
+<li>Varying life insurance according to a arithmetic progression: <code>Av.(x, h, n, k = 1, r = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code><br />
+<em>For an increasing life insurance coverage, ‘r’ must be 1.</em></li>
+<li>Varying life insurance according to a geometric progression.: <code>Avg.(x, h, n, k = 1, r = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></li>
+<li>Decreasing life insurance: <code>AD.(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></li>
+<li>Continuous life insurance: <code>ACont.(x, h, n, i = 0.04, data, prop = 1, assumption = &quot;UDD&quot;, cap = 1)</code></li>
+</ul></li>
+<li><p>Life Annuity:</p>
+<ul>
+<li>Life annuity: <code>a(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code></li>
+<li>Varying life annuity according to a arithmetic progression: <code>av(x,h,n,k = 1,r = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code> <em>For an increasing life annuity coverage, ‘r’ must be 1.</em></li>
+<li>Varying life annuity according to a geometric progression: <code>avg(x,h,n,k = 1,r = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></li>
+<li>Decreasing life annuity: <code>aD(x, h,  n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></li>
+<li>Continuous life annuities: <code>aCont(x, h, n, i = 0.04, data, prop = 1, assumption = &quot;constant&quot;, cap = 1)</code></li>
+</ul></li>
+</ul>
+<p>The mortality table in data must be a data frame with the age -an integer- in the first column (from 0 to omega), and the second column, the probability of death.</p>
+<p>For calculating an annualized premium: <code>PremiumFrac(px1, x, m, k, i = 0.04, data, prop = 1, effect = &quot;yes&quot;, assumption)</code></p>
+<div id="examples" class="section level4">
+<h4>Examples</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>Px1 &lt;-<span class="st"> </span><span class="kw">Av.</span>(<span class="dt">x=</span><span class="dv">25</span>, <span class="dt">h=</span><span class="dv">5</span>, <span class="dt">n=</span><span class="dv">10</span>,<span class="dt">r=</span> <span class="dv">1</span>,<span class="dt">i =</span> <span class="fl">0.035</span>, <span class="dt">data=</span>CSO80MANB, <span class="dt">cap =</span> <span class="dv">150000</span>) <span class="co">#Actuarial Present Value of the increasing life insurance.</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>Net_Prem &lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(Px1,<span class="dt">x=</span><span class="dv">25</span>,<span class="dt">m=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.035</span>, <span class="dt">data=</span>CSO80MANB) <span class="co">#Net premium to be paid at the begining of   each year of the defferal term.</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>Prem&lt;-<span class="st"> </span><span class="kw">a</span>(<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">20</span>,<span class="dt">k=</span><span class="dv">2</span>,<span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">data=</span>CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>) <span class="co">#Actuarial Present Value of the life annuity, paid twice a year.</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>Annualized_Prem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(Prem,<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">m=</span><span class="dv">10</span>,<span class="dt">k=</span><span class="dv">4</span>,<span class="dt">data=</span>CSO80FALB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>) <span class="co">#Annualized    value of the premium to be paid four times a year for 10 years.</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>PremQuart&lt;-Annualized_Prem<span class="op">/</span><span class="dv">4</span></span></code></pre></div>
+</div>
+</div>
+<div id="actuarial-reserves" class="section level2">
+<h2>Actuarial reserves</h2>
+<p>Calculates the reserve up to the moment ‘t’:</p>
+<ul>
+<li><p>Pure Endowments: <code>V_E(px, x, n, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap, t)</code></p></li>
+<li><p>Life annuity: <code>V_a(px, x, h, n, k = 1, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap, t)</code></p></li>
+</ul>
+<p><code>V_A.(px, x, h, n, k = 1, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap, t)</code> Life insurance</p>
+<ul>
+<li><p>Varying life annuity according to a arithmetic progression: <code>V_av(px, x, h, n, k = 1, r, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap, t)</code></p></li>
+<li><p>Varying life insurance according to a arithmetic progression: <code>V_Av.(px, x, h, n, k = 1, r, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap, t)</code></p></li>
+<li><p>Varying life annuity according to a geometric progression: <code>V_avg(px, x, h, n, k = 1, r, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap, t)</code></p></li>
+<li><p>Varying life insurance according to a geometric progression:<code>V_Avg.(px, x, h, n, k = 1, r, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap, t)</code></p></li>
+<li><p>Decreasing life annuity: <code>V_aD(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></p></li>
+<li><p>Decreasing life insurance: <code>V_AD.(px, x, h, n, k = 1, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation =&quot;none&quot;, cap, t)</code></p></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>Prem&lt;-<span class="kw">av</span>(<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">h=</span><span class="dv">7</span>,<span class="dt">n=</span><span class="dv">13</span>,<span class="dt">r=</span><span class="fl">0.05</span>, <span class="dt">i=</span><span class="fl">0.045</span>, <span class="dt">data =</span> CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>) <span class="co">#Actuarial present value of a varying life annuity according to a arithmetic progression</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>AnnualPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">45</span>, <span class="dt">m=</span><span class="dv">7</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.045</span>,<span class="dt">data=</span> CSO80FALB) <span class="co">#Annual premium to be paid at the beginning of each year of the deferral term. </span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">V_av</span>(<span class="dt">px=</span> AnnualPrem, <span class="dt">x=</span><span class="dv">45</span>, <span class="dt">h=</span><span class="dv">7</span>, <span class="dt">n=</span><span class="dv">13</span>, <span class="dt">r=</span><span class="fl">0.05</span>, <span class="dt">cantprem =</span> <span class="dv">7</span>, <span class="dt">premperyear =</span> <span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.045</span>, <span class="dt">data=</span> CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">t=</span><span class="dv">20</span>) <span class="co">#Reserve of the coverage up to the year 20</span></span></code></pre></div>
+<pre><code>##                    Premium  Risk                E    Reserve
+## Period 1  17228.4380349005     0 1.04885980407901  18070.216
+## Period 2  17228.4380349005     0 1.04911252108264  37032.260
+## Period 3  17228.4380349005     0 1.04939697331820  56941.012
+## Period 4  17228.4380349005     0 1.04970266795243  77855.870
+## Period 5  17228.4380349005     0 1.05002964198511  99841.342
+## Period 6  17228.4380349005     0 1.05038849296893 122968.750
+## Period 7  17228.4380349005     0 1.05077928607340 147316.301
+## Period 8      0.0000000000 12000 1.05122324159021 142247.640
+## Period 9      0.0000000000 12600 1.05170990922083 136351.708
+## Period 10     0.0000000000 13200 1.05220762221215 129581.166
+## Period 11     0.0000000000 13800 1.05271641129479 121884.734
+## Period 12     0.0000000000 14400 1.05321507760532 113204.542
+## Period 13     0.0000000000 15000 1.05369296697756 103477.435
+## Period 14     0.0000000000 15600 1.05417129022496  92637.869
+## Period 15     0.0000000000 16200 1.05470327008478  80619.271
+## Period 16     0.0000000000 16800 1.05534235507978  67351.179
+## Period 17     0.0000000000 17400 1.05613162735229  52755.020
+## Period 18     0.0000000000 18000 1.05714661460177  36741.152
+## Period 19     0.0000000000 18600 1.05836717745121  19200.000
+## Period 20     0.0000000000 19200 1.05975174428038      0.000</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>Prem&lt;-<span class="st"> </span><span class="kw">Avg.</span>(<span class="dt">x=</span><span class="dv">24</span>, <span class="dt">h=</span><span class="dv">10</span>,<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">r=</span><span class="fl">0.06</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">cap=</span> <span class="dv">100000</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;inter&quot;</span>) <span class="co">#Actuarial present value of a varying life insurance according to a geometric progression</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>AnnualPrem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">24</span>, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">i=</span><span class="fl">0.03</span>) <span class="co">#Annual premium to be paid at the beginning of each year of the deferral term </span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">V_Avg.</span>(<span class="dt">px =</span>AnnualPrem, <span class="dt">x=</span><span class="dv">24</span>, <span class="dt">h=</span><span class="dv">10</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">r=</span><span class="fl">0.06</span>, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">cantprem =</span> <span class="dv">10</span>, <span class="dt">premperyear =</span> <span class="dv">1</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;inter&quot;</span>, <span class="dt">cap=</span><span class="dv">100000</span>, <span class="dt">t=</span><span class="dv">240</span>) <span class="co">#Reserve of the coverage up to the month 240</span></span></code></pre></div>
+<pre><code>##                    Premium             Risk                E  Reserve
+## Month 1   272.896624382958  0.0000000000000 1.00261666227164  273.611
+## Month 2     0.000000000000  0.0000000000000 1.00261668483729  274.327
+## Month 3     0.000000000000  0.0000000000000 1.00261670740971  275.044
+## Month 4     0.000000000000  0.0000000000000 1.00261672998890  275.764
+## Month 5     0.000000000000  0.0000000000000 1.00261675257487  276.486
+## Month 6     0.000000000000  0.0000000000000 1.00261677516763  277.209
+## Month 7     0.000000000000  0.0000000000000 1.00261679776716  277.935
+## Month 8     0.000000000000  0.0000000000000 1.00261682037349  278.662
+## Month 9     0.000000000000  0.0000000000000 1.00261684298661  279.391
+## Month 10    0.000000000000  0.0000000000000 1.00261686560652  280.122
+## Month 11    0.000000000000  0.0000000000000 1.00261688823323  280.855
+## Month 12    0.000000000000  0.0000000000000 1.00261691086674  281.590
+## Month 13  272.896624382958  0.0000000000000 1.00261248409290  555.936
+## Month 14    0.000000000000  0.0000000000000 1.00261250542204  557.388
+## Month 15    0.000000000000  0.0000000000000 1.00261252675741  558.844
+## Month 16    0.000000000000  0.0000000000000 1.00261254809900  560.304
+## Month 17    0.000000000000  0.0000000000000 1.00261256944682  561.768
+## Month 18    0.000000000000  0.0000000000000 1.00261259080088  563.236
+## Month 19    0.000000000000  0.0000000000000 1.00261261216117  564.707
+## Month 20    0.000000000000  0.0000000000000 1.00261263352769  566.183
+## Month 21    0.000000000000  0.0000000000000 1.00261265490046  567.662
+## Month 22    0.000000000000  0.0000000000000 1.00261267627947  569.145
+## Month 23    0.000000000000  0.0000000000000 1.00261269766472  570.632
+## Month 24    0.000000000000  0.0000000000000 1.00261271905623  572.123
+## Month 25  272.896624382958  0.0000000000000 1.00260997720237  847.225
+## Month 26    0.000000000000  0.0000000000000 1.00260999780634  849.436
+## Month 27    0.000000000000  0.0000000000000 1.00261001841622  851.653
+## Month 28    0.000000000000  0.0000000000000 1.00261003903201  853.876
+## Month 29    0.000000000000  0.0000000000000 1.00261005965372  856.105
+## Month 30    0.000000000000  0.0000000000000 1.00261008028134  858.339
+## Month 31    0.000000000000  0.0000000000000 1.00261010091488  860.580
+## Month 32    0.000000000000  0.0000000000000 1.00261012155435  862.826
+## Month 33    0.000000000000  0.0000000000000 1.00261014219974  865.078
+## Month 34    0.000000000000  0.0000000000000 1.00261016285105  867.336
+## Month 35    0.000000000000  0.0000000000000 1.00261018350829  869.600
+## Month 36    0.000000000000  0.0000000000000 1.00261020417147  871.870
+## Month 37  272.896624382958  0.0000000000000 1.00260914157498 1147.753
+## Month 38    0.000000000000  0.0000000000000 1.00260916194001 1150.748
+## Month 39    0.000000000000  0.0000000000000 1.00260918231086 1153.750
+## Month 40    0.000000000000  0.0000000000000 1.00260920268751 1156.761
+## Month 41    0.000000000000  0.0000000000000 1.00260922306997 1159.779
+## Month 42    0.000000000000  0.0000000000000 1.00260924345825 1162.805
+## Month 43    0.000000000000  0.0000000000000 1.00260926385234 1165.839
+## Month 44    0.000000000000  0.0000000000000 1.00260928425225 1168.881
+## Month 45    0.000000000000  0.0000000000000 1.00260930465799 1171.931
+## Month 46    0.000000000000  0.0000000000000 1.00260932506954 1174.989
+## Month 47    0.000000000000  0.0000000000000 1.00260934548693 1178.055
+## Month 48    0.000000000000  0.0000000000000 1.00260936591014 1181.129
+## Month 49  272.896624382958  0.0000000000000 1.00260830594898 1457.818
+## Month 50    0.000000000000  0.0000000000000 1.00260832607647 1461.621
+## Month 51    0.000000000000  0.0000000000000 1.00260834620967 1465.433
+## Month 52    0.000000000000  0.0000000000000 1.00260836634858 1469.255
+## Month 53    0.000000000000  0.0000000000000 1.00260838649320 1473.088
+## Month 54    0.000000000000  0.0000000000000 1.00260840664353 1476.930
+## Month 55    0.000000000000  0.0000000000000 1.00260842679957 1480.783
+## Month 56    0.000000000000  0.0000000000000 1.00260844696134 1484.645
+## Month 57    0.000000000000  0.0000000000000 1.00260846712882 1488.518
+## Month 58    0.000000000000  0.0000000000000 1.00260848730202 1492.401
+## Month 59    0.000000000000  0.0000000000000 1.00260850748095 1496.294
+## Month 60    0.000000000000  0.0000000000000 1.00260852766561 1500.197
+## Month 61  272.896624382958  0.0000000000000 1.00260997720237 1777.721
+## Month 62    0.000000000000  0.0000000000000 1.00260999780634 1782.361
+## Month 63    0.000000000000  0.0000000000000 1.00261001841622 1787.013
+## Month 64    0.000000000000  0.0000000000000 1.00261003903201 1791.677
+## Month 65    0.000000000000  0.0000000000000 1.00261005965372 1796.353
+## Month 66    0.000000000000  0.0000000000000 1.00261008028134 1801.042
+## Month 67    0.000000000000  0.0000000000000 1.00261010091488 1805.743
+## Month 68    0.000000000000  0.0000000000000 1.00261012155435 1810.456
+## Month 69    0.000000000000  0.0000000000000 1.00261014219974 1815.182
+## Month 70    0.000000000000  0.0000000000000 1.00261016285105 1819.920
+## Month 71    0.000000000000  0.0000000000000 1.00261018350829 1824.670
+## Month 72    0.000000000000  0.0000000000000 1.00261020417147 1829.433
+## Month 73  272.896624382958  0.0000000000000 1.00261248409290 2107.822
+## Month 74    0.000000000000  0.0000000000000 1.00261250542204 2113.328
+## Month 75    0.000000000000  0.0000000000000 1.00261252675741 2118.850
+## Month 76    0.000000000000  0.0000000000000 1.00261254809900 2124.385
+## Month 77    0.000000000000  0.0000000000000 1.00261256944682 2129.935
+## Month 78    0.000000000000  0.0000000000000 1.00261259080088 2135.500
+## Month 79    0.000000000000  0.0000000000000 1.00261261216117 2141.079
+## Month 80    0.000000000000  0.0000000000000 1.00261263352769 2146.673
+## Month 81    0.000000000000  0.0000000000000 1.00261265490046 2152.281
+## Month 82    0.000000000000  0.0000000000000 1.00261267627947 2157.905
+## Month 83    0.000000000000  0.0000000000000 1.00261269766472 2163.543
+## Month 84    0.000000000000  0.0000000000000 1.00261271905623 2169.195
+## Month 85  272.896624382958  0.0000000000000 1.00261666227164 2448.482
+## Month 86    0.000000000000  0.0000000000000 1.00261668483729 2454.889
+## Month 87    0.000000000000  0.0000000000000 1.00261670740971 2461.313
+## Month 88    0.000000000000  0.0000000000000 1.00261672998890 2467.753
+## Month 89    0.000000000000  0.0000000000000 1.00261675257487 2474.211
+## Month 90    0.000000000000  0.0000000000000 1.00261677516763 2480.685
+## Month 91    0.000000000000  0.0000000000000 1.00261679776716 2487.177
+## Month 92    0.000000000000  0.0000000000000 1.00261682037349 2493.685
+## Month 93    0.000000000000  0.0000000000000 1.00261684298661 2500.211
+## Month 94    0.000000000000  0.0000000000000 1.00261686560652 2506.754
+## Month 95    0.000000000000  0.0000000000000 1.00261688823323 2513.313
+## Month 96    0.000000000000  0.0000000000000 1.00261691086674 2519.891
+## Month 97  272.896624382958  0.0000000000000 1.00262251178039 2800.111
+## Month 98    0.000000000000  0.0000000000000 1.00262253613569 2807.455
+## Month 99    0.000000000000  0.0000000000000 1.00262256049859 2814.817
+## Month 100   0.000000000000  0.0000000000000 1.00262258486909 2822.200
+## Month 101   0.000000000000  0.0000000000000 1.00262260924718 2829.601
+## Month 102   0.000000000000  0.0000000000000 1.00262263363289 2837.022
+## Month 103   0.000000000000  0.0000000000000 1.00262265802620 2844.463
+## Month 104   0.000000000000  0.0000000000000 1.00262268242712 2851.923
+## Month 105   0.000000000000  0.0000000000000 1.00262270683566 2859.402
+## Month 106   0.000000000000  0.0000000000000 1.00262273125182 2866.902
+## Month 107   0.000000000000  0.0000000000000 1.00262275567560 2874.421
+## Month 108   0.000000000000  0.0000000000000 1.00262278010700 2881.960
+## Month 109 272.896624382958  0.0000000000000 1.00262919701682 3163.151
+## Month 110   0.000000000000  0.0000000000000 1.00262922350110 3171.468
+## Month 111   0.000000000000  0.0000000000000 1.00262924999400 3179.807
+## Month 112   0.000000000000  0.0000000000000 1.00262927649551 3188.167
+## Month 113   0.000000000000  0.0000000000000 1.00262930300564 3196.550
+## Month 114   0.000000000000  0.0000000000000 1.00262932952440 3204.955
+## Month 115   0.000000000000  0.0000000000000 1.00262935605178 3213.382
+## Month 116   0.000000000000  0.0000000000000 1.00262938258780 3221.831
+## Month 117   0.000000000000  0.0000000000000 1.00262940913246 3230.302
+## Month 118   0.000000000000  0.0000000000000 1.00262943568575 3238.796
+## Month 119   0.000000000000  0.0000000000000 1.00262946224769 3247.313
+## Month 120   0.000000000000  0.0000000000000 1.00262948881828 3255.851
+## Month 121   0.000000000000 16.9575579091461 1.00263755368773 3247.437
+## Month 122   0.000000000000 17.0022843785442 1.00263758295873 3238.955
+## Month 123   0.000000000000 17.0471293140805 1.00263761223974 3230.406
+## Month 124   0.000000000000 16.9662531138670 1.00263764153076 3221.915
+## Month 125   0.000000000000 17.0110040077015 1.00263767083179 3213.358
+## Month 126   0.000000000000 17.0558734367921 1.00263770014285 3204.733
+## Month 127   0.000000000000 16.9749572403175 1.00263772946394 3196.166
+## Month 128   0.000000000000 17.0197325851793 1.00263775879505 3187.532
+## Month 129   0.000000000000 17.0646265344953 1.00263778813621 3178.831
+## Month 130   0.000000000000 16.9836703022358 1.00263781748740 3170.188
+## Month 131   0.000000000000 17.0284701247593 1.00263784684865 3161.477
+## Month 132   0.000000000000 17.0733886210152 1.00263787621994 3152.698
+## Month 133   0.000000000000 19.0272071720087 1.00264758187669 3141.967
+## Month 134   0.000000000000 19.0775832608814 1.00264761467583 3131.158
+## Month 135   0.000000000000 19.1280933503023 1.00264764748683 3120.269
+## Month 136   0.000000000000 19.0375350347651 1.00264768030971 3109.443
+## Month 137   0.000000000000 19.0879403414221 1.00264771314447 3098.537
+## Month 138   0.000000000000 19.1384797319649 1.00264774599112 3087.552
+## Month 139   0.000000000000 19.0478741154240 1.00264777884966 3076.629
+## Month 140   0.000000000000 19.0983086736378 1.00264781172011 3065.627
+## Month 141   0.000000000000 19.1488773991781 1.00264784460246 3054.544
+## Month 142   0.000000000000 19.0582244322723 1.00264787749672 3043.524
+## Month 143   0.000000000000 19.1086882758740 1.00264791040291 3032.423
+## Month 144   0.000000000000 19.1592863703456 1.00264794332102 3021.243
+## Month 145   0.000000000000 21.5629990218451 1.00266011739500 3007.660
+## Month 146   0.000000000000 21.6203591306315 1.00266015488670 2993.983
+## Month 147   0.000000000000 21.6778726346251 1.00266019239291 2980.212
+## Month 148   0.000000000000 21.5755128192803 1.00266022991364 2966.507
+## Month 149   0.000000000000 21.6329086438842 1.00266026744888 2952.708
+## Month 150   0.000000000000 21.6904579665741 1.00266030499866 2938.815
+## Month 151   0.000000000000 21.5880411495786 1.00266034256297 2924.988
+## Month 152   0.000000000000 21.6454727343000 1.00266038014183 2911.066
+## Month 153   0.000000000000 21.7030579201229 1.00266041773525 2897.050
+## Month 154   0.000000000000 21.6005840380714 1.00266045534323 2883.099
+## Month 155   0.000000000000 21.6580514272923 1.00266049296578 2869.054
+## Month 156   0.000000000000 21.7156725207673 1.00266053060292 2854.914
+## Month 157   0.000000000000 24.5316291458009 1.00267432469468 2837.952
+## Month 158   0.000000000000 24.5972346874262 1.00267436788400 2820.878
+## Month 159   0.000000000000 24.6630167419094 1.00267441109125 2803.694
+## Month 160   0.000000000000 24.5469095970250 1.00267445431645 2786.579
+## Month 161   0.000000000000 24.6125591853524 1.00267449755961 2769.354
+## Month 162   0.000000000000 24.6783854148294 1.00267454082074 2752.016
+## Month 163   0.000000000000 24.5622090961255 1.00267458409984 2734.749
+## Month 164   0.000000000000 24.6279027900310 1.00267462739694 2717.369
+## Month 165   0.000000000000 24.6937732535624 1.00267467071204 2699.878
+## Month 166   0.000000000000 24.5775276787409 1.00267471404515 2682.456
+## Month 167   0.000000000000 24.6432655372183 1.00267475739628 2664.922
+## Month 168   0.000000000000 24.7091802939825 1.00267480076545 2647.274
+## Month 169   0.000000000000 27.9877317579884 1.00269020391785 2626.333
+## Month 170   0.000000000000 28.0630244636153 1.00269025395215 2605.260
+## Month 171   0.000000000000 28.1385211260880 1.00269030400882 2584.055
+## Month 172   0.000000000000 28.0064961103824 1.00269035408787 2562.925
+## Month 173   0.000000000000 28.0818435016800 1.00269040418932 2541.663
+## Month 174   0.000000000000 28.1573950110807 1.00269045431317 2520.268
+## Month 175   0.000000000000 28.0252856407470 1.00269050445945 2498.948
+## Month 176   0.000000000000 28.1006877967407 1.00269055462816 2477.495
+## Month 177   0.000000000000 28.1762942323468 1.00269060481933 2455.909
+## Month 178   0.000000000000 28.0441003997920 1.00269065503297 2434.398
+## Month 179   0.000000000000 28.1195573996778 1.00269070526909 2412.753
+## Month 180   0.000000000000 28.1952188409375 1.00269075552771 2390.974
+## Month 181   0.000000000000 32.1023460537524 1.00270859101513 2365.261
+## Month 182   0.000000000000 32.1892981798382 1.00270864960442 2339.391
+## Month 183   0.000000000000 32.2764877096195 1.00270870822204 2313.364
+## Month 184   0.000000000000 32.1256371406794 1.00270876686802 2287.417
+## Month 185   0.000000000000 32.2126580021802 1.00270882554239 2261.314
+## Month 186   0.000000000000 32.2999164729647 1.00270888424515 2235.052
+## Month 187   0.000000000000 32.1489620487230 1.00270894297634 2208.870
+## Month 188   0.000000000000 32.2360517536614 1.00270900173596 2182.531
+## Month 189   0.000000000000 32.3233792738226 1.00270906052405 2156.032
+## Month 190   0.000000000000 32.1723208516046 1.00270911934062 2129.614
+## Month 191   0.000000000000 32.2594795082564 1.00270917818570 2103.037
+## Month 192   0.000000000000 32.3468761864221 1.00270923705930 2076.300
+## Month 193   0.000000000000 36.9619770598204 1.00272948626245 2044.904
+## Month 194   0.000000000000 37.0628642684381 1.00272955539307 2013.322
+## Month 195   0.000000000000 37.1640294094846 1.00272962456001 1981.552
+## Month 196   0.000000000000 36.9911075570216 1.00272969376331 1949.869
+## Month 197   0.000000000000 37.0920819526179 1.00272976300298 1917.998
+## Month 198   0.000000000000 37.1933345456358 1.00272983227907 1885.939
+## Month 199   0.000000000000 37.0202840071316 1.00272990159159 1853.966
+## Month 200   0.000000000000 37.1213457393637 1.00272997094057 1821.805
+## Month 201   0.000000000000 37.2226859345071 1.00273004032605 1789.454
+## Month 202   0.000000000000 37.0495065189715 1.00273010974806 1757.189
+## Month 203   0.000000000000 37.1506557378795 1.00273017920661 1724.734
+## Month 204   0.000000000000 37.2520836856870 1.00273024870175 1692.089
+## Month 205   0.000000000000 42.5379553134162 1.00275205410772 1654.091
+## Month 206   0.000000000000 42.6550220680707 1.00275213560271 1615.871
+## Month 207   0.000000000000 42.7724144729387 1.00275221714419 1577.428
+## Month 208   0.000000000000 42.5743563881280 1.00275229873220 1539.078
+## Month 209   0.000000000000 42.6915337352394 1.00275238036679 1500.505
+## Month 210   0.000000000000 42.8090370745203 1.00275246204798 1461.708
+## Month 211   0.000000000000 42.6108198153003 1.00275254377583 1423.004
+## Month 212   0.000000000000 42.7281079621658 1.00275262555036 1384.075
+## Month 213   0.000000000000 42.8457224438611 1.00275270737163 1344.921
+## Month 214   0.000000000000 42.6473457552785 1.00275278923967 1305.859
+## Month 215   0.000000000000 42.7647449097741 1.00275287115452 1266.571
+## Month 216   0.000000000000 42.8824707424667 1.00275295311622 1227.057
+## Month 217   0.000000000000 48.9136734109767 1.00277629477677 1181.415
+## Month 218   0.000000000000 49.0494721869804 1.00277639068547 1135.509
+## Month 219   0.000000000000 49.1856526846877 1.00277648665353 1089.339
+## Month 220   0.000000000000 48.9590829604225 1.00277658268101 1043.269
+## Month 221   0.000000000000 49.0950219022484 1.00277667876795  996.935
+## Month 222   0.000000000000 49.2313430071762 1.00277677491441  950.335
+## Month 223   0.000000000000 49.0045769011283 1.00277687112046  903.833
+## Month 224   0.000000000000 49.1406562954954 1.00277696738614  857.066
+## Month 225   0.000000000000 49.2771182953615 1.00277706371151  810.032
+## Month 226   0.000000000000 49.0501554685680 1.00277716009663  763.095
+## Month 227   0.000000000000 49.1863756030687 1.00277725654155  715.892
+## Month 228   0.000000000000 49.3229787864673 1.00277735304632  668.420
+## Month 229   0.000000000000 56.3206010989246 1.00280304446140  613.815
+## Month 230   0.000000000000 56.4784702478978 1.00280315763759  558.899
+## Month 231   0.000000000000 56.6367883031323 1.00280327088986  503.670
+## Month 232   0.000000000000 56.3774013307654 1.00280338421831  448.547
+## Month 233   0.000000000000 56.5354488479253 1.00280349762300  393.110
+## Month 234   0.000000000000 56.6939458443857 1.00280361110402  337.359
+## Month 235   0.000000000000 56.4343162461606 1.00280372466144  281.713
+## Month 236   0.000000000000 56.5925425303714 1.00280383829533  225.751
+## Month 237   0.000000000000 56.7512188683483 1.00280395200579  169.474
+## Month 238   0.000000000000 56.4913461927923 1.00280406579287  113.300
+## Month 239   0.000000000000 56.6497516442448 1.00280417965667   56.809
+## Month 240   0.000000000000 56.8086077253608 1.00280429359725    0.000</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Prem&lt;-<span class="st"> </span><span class="kw">A.</span>(<span class="dt">x=</span><span class="dv">40</span>, <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">15</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">data=</span> CSO80FANB, <span class="dt">cap=</span><span class="dv">105000</span>) <span class="co">#Actuarial present value of the life insurance</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>AnnualizedPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">40</span>, <span class="dt">m=</span><span class="dv">15</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">data=</span> CSO80FANB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>) <span class="co">#Annualized value of the premium to be paid four time a year. </span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">V_A.</span>(<span class="dt">px =</span> AnnualizedPrem<span class="op">/</span><span class="dv">4</span>, <span class="dt">x=</span><span class="dv">40</span>, <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">15</span>, <span class="dt">cantprem =</span> <span class="dv">60</span>, <span class="dt">premperyear =</span> <span class="dv">4</span>, <span class="dt">data=</span>CSO80FANB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">t=</span> <span class="dv">180</span>, <span class="dt">cap=</span><span class="dv">105000</span>)  <span class="co">#Reserve of the coverage up to the month 180</span></span></code></pre></div>
+<pre><code>##                    Premium             Risk                E Reserve
+## Month 1   98.9156631762375 19.9764150943385 1.00507023973036  79.339
+## Month 2    0.0000000000000 20.0777003078199 1.00507028062250  59.562
+## Month 3    0.0000000000000 20.1794998826349 1.00507032153114  39.582
+## Month 4   98.9156631762375 20.2818164353775 1.00507036245630 118.816
+## Month 5    0.0000000000000 20.3846525959770 1.00507040339798  98.930
+## Month 6    0.0000000000000 20.4880110077663 1.00507044435619  78.840
+## Month 7   98.9156631762375 20.5918943275503 1.00507048533095 157.961
+## Month 8    0.0000000000000 20.6963052256746 1.00507052632226 137.960
+## Month 9    0.0000000000000 20.8012463860950 1.00507056733014 117.753
+## Month 10  98.9156631762375 20.9067205064464 1.00507060835458 196.755
+## Month 11   0.0000000000000 21.0127302981133 1.00507064939561 176.633
+## Month 12   0.0000000000000 21.1192784862996 1.00507069045324 156.302
+## Month 13  98.9156631762375 21.7924528301885 1.00508867007276 234.613
+## Month 14   0.0000000000000 21.9033474327175 1.00508871874046 213.792
+## Month 15   0.0000000000000 22.0148074072772 1.00508876742960 192.753
+## Month 16  98.9156631762375 22.1268356421803 1.00508881614017 270.914
+## Month 17   0.0000000000000 22.2394350405272 1.00508886487221 249.940
+## Month 18   0.0000000000000 22.3526085202826 1.00508891362571 228.746
+## Month 19  98.9156631762375 22.4663590143515 1.00508896240069 306.748
+## Month 20   0.0000000000000 22.5806894706561 1.00508901119718 285.613
+## Month 21   0.0000000000000 22.6956028522123 1.00508906001518 264.256
+## Month 22  98.9156631762375 22.8111021372078 1.00508910885470 342.093
+## Month 23   0.0000000000000 22.9271903190798 1.00508915771577 320.790
+## Month 24   0.0000000000000 23.0438704065931 1.00508920659839 299.261
+## Month 25  98.9156631762375 23.6910377358494 1.00510793888073 376.399
+## Month 26   0.0000000000000 23.8120501086251 1.00510799640111 354.387
+## Month 27   0.0000000000000 23.9336819748830 1.00510805394903 332.142
+## Month 28  98.9156631762375 24.0559365136096 1.00510811152450 409.081
+## Month 29   0.0000000000000 24.1788169201476 1.00510816912755 386.868
+## Month 30   0.0000000000000 24.3023264062798 1.00510822675819 364.418
+## Month 31  98.9156631762375 24.4264682003146 1.00510828441644 441.149
+## Month 32   0.0000000000000 24.5512455471710 1.00510834210233 418.726
+## Month 33   0.0000000000000 24.6766617084642 1.00510839981586 396.062
+## Month 34  98.9156631762375 24.8027199625918 1.00510845755708 472.577
+## Month 35   0.0000000000000 24.9294236048208 1.00510851532598 449.934
+## Month 36   0.0000000000000 25.0567759473738 1.00510857312259 427.048
+## Month 37  98.9156631762375 25.5070754716975 1.00512637060577 503.022
+## Month 38   0.0000000000000 25.6378341936349 1.00512643728627 479.832
+## Month 39   0.0000000000000 25.7692649427845 1.00512650400114 456.390
+## Month 40  98.9156631762375 25.9013711826201 1.00512657075040 532.118
+## Month 41   0.0000000000000 26.0341563945203 1.00512663753409 508.679
+## Month 42   0.0000000000000 26.1676240778607 1.00512670435221 484.985
+## Month 43  98.9156631762375 26.3017777501078 1.00512677120482 560.457
+## Month 44   0.0000000000000 26.4366209469125 1.00512683809192 536.759
+## Month 45   0.0000000000000 26.5721572222048 1.00512690501355 512.802
+## Month 46  98.9156631762375 26.7083901482881 1.00512697196973 588.009
+## Month 47   0.0000000000000 26.8453233159350 1.00512703896049 564.040
+## Month 48   0.0000000000000 26.9829603344828 1.00512710598586 539.811
+## Month 49  98.9156631762375 27.4056603773584 1.00514564085931 614.467
+## Month 50   0.0000000000000 27.5466800631726 1.00514571784022 589.940
+## Month 51   0.0000000000000 27.6884275062127 1.00514579486377 565.145
+## Month 52  98.9156631762375 27.8309064742599 1.00514587192998 639.504
+## Month 53   0.0000000000000 27.9741207546716 1.00514594903889 614.676
+## Month 54   0.0000000000000 28.1180741544828 1.00514602619054 589.577
+## Month 55  98.9156631762375 28.2627705005093 1.00514610338496 663.627
+## Month 56   0.0000000000000 28.4082136394503 1.00514618062219 638.488
+## Month 57   0.0000000000000 28.5544074379927 1.00514625790227 613.072
+## Month 58  98.9156631762375 28.7013557829151 1.00514633522523 686.803
+## Month 59   0.0000000000000 28.8490625811924 1.00514641259110 661.340
+## Month 60   0.0000000000000 28.9975317601016 1.00514648999992 635.597
+## Month 61  98.9156631762375 29.3867924528293 1.00516574973777 708.768
+## Month 62   0.0000000000000 29.5385972682363 1.00516583825604 682.739
+## Month 63   0.0000000000000 29.6911888840343 1.00516592682688 656.421
+## Month 64  98.9156631762375 29.8445713932124 1.00516601545034 729.240
+## Month 65   0.0000000000000 29.9987489101386 1.00516610412646 702.854
+## Month 66   0.0000000000000 30.1537255706719 1.00516619285529 676.175
+## Month 67  98.9156631762375 30.3095055322753 1.00516628163687 748.629
+## Month 68   0.0000000000000 30.4660929741293 1.00516637047125 721.873
+## Month 69   0.0000000000000 30.6234920972454 1.00516645935849 694.821
+## Month 70  98.9156631762375 30.7817071245808 1.00516654829862 766.897
+## Month 71   0.0000000000000 30.9407423011539 1.00516663729169 739.759
+## Month 72   0.0000000000000 31.1006018941597 1.00516672633776 712.319
+## Month 73  98.9156631762375 31.3679245283012 1.00518585942083 783.911
+## Month 74   0.0000000000000 31.5305941752280 1.00518596028251 756.283
+## Month 75   0.0000000000000 31.6941105843047 1.00518606120813 728.346
+## Month 76  98.9156631762375 31.8584781817322 1.00518616219776 799.529
+## Month 77   0.0000000000000 32.0237014169564 1.00518626325144 771.485
+## Month 78   0.0000000000000 32.1897847627903 1.00518636436925 743.130
+## Month 79  98.9156631762375 32.3567327155378 1.00518646555124 813.888
+## Month 80   0.0000000000000 32.5245497951177 1.00518656679748 785.416
+## Month 81   0.0000000000000 32.6932405451879 1.00518666810802 756.627
+## Month 82  98.9156631762375 32.8628095332714 1.00518676948293 826.947
+## Month 83   0.0000000000000 33.0332613508819 1.00518687092227 798.032
+## Month 84   0.0000000000000 33.2046006136503 1.00518697242609 768.794
+## Month 85  98.9156631762375 33.4316037735858 1.00520680786300 838.622
+## Month 86   0.0000000000000 33.6056757109867 1.00520692243967 809.208
+## Month 87   0.0000000000000 33.7806578579466 1.00520703709377 779.465
+## Month 88  98.9156631762375 33.9565549964649 1.00520715182536 848.821
+## Month 89   0.0000000000000 34.1333719337977 1.00520726663453 818.930
+## Month 90   0.0000000000000 34.3111135025924 1.00520738152134 788.705
+## Month 91  98.9156631762375 34.4897845610225 1.00520749648590 857.574
+## Month 92   0.0000000000000 34.6693899929234 1.00520761152826 827.190
+## Month 93   0.0000000000000 34.8499347079282 1.00520772664851 796.466
+## Month 94  98.9156631762375 35.0314236416056 1.00520784184673 864.831
+## Month 95   0.0000000000000 35.2138617555970 1.00520795712300 833.937
+## Month 96   0.0000000000000 35.3972540377555 1.00520807247740 802.699
+## Month 97  98.9156631762375 35.7429245283014 1.00523027115485 870.401
+## Month 98   0.0000000000000 35.9298697154518 1.00523040213105 838.835
+## Month 99   0.0000000000000 36.1177973825800 1.00523053320188 806.916
+## Month 100 98.9156631762375 36.3067127209682 1.00523066436743 874.073
+## Month 101  0.0000000000000 36.4966209494961 1.00523079562781 841.958
+## Month 102  0.0000000000000 36.6875273147884 1.00523092698312 809.483
+## Month 103 98.9156631762375 36.8794370913632 1.00523105843346 876.078
+## Month 104  0.0000000000000 37.0723555817813 1.00523118997895 843.394
+## Month 105  0.0000000000000 37.2662881167966 1.00523132161967 810.345
+## Month 106 98.9156631762375 37.4612400555069 1.00523145335574 876.361
+## Month 107  0.0000000000000 37.6572167855055 1.00523158518726 843.091
+## Month 108  0.0000000000000 37.8542237230340 1.00523171711433 809.450
+## Month 109 98.9156631762375 38.2193396226417 1.00525541161166 874.719
+## Month 110  0.0000000000000 38.4201979838844 1.00525556137695 840.694
+## Month 111  0.0000000000000 38.6221176925031 1.00525571125794 806.287
+## Month 112 98.9156631762375 38.8251043912650 1.00525586125477 870.931
+## Month 113  0.0000000000000 39.0291637531473 1.00525601136757 836.275
+## Month 114  0.0000000000000 39.2343014815005 1.00525616159647 801.230
+## Month 115 98.9156631762375 39.4405233102120 1.00525631194162 865.229
+## Month 116  0.0000000000000 39.6478350038712 1.00525646240314 829.921
+## Month 117  0.0000000000000 39.8562423579350 1.00525661298118 794.218
+## Month 118 98.9156631762375 40.0657511988946 1.00525676367585 857.552
+## Month 119  0.0000000000000 40.2763673844428 1.00525691448732 821.572
+## Month 120  0.0000000000000 40.4880968036425 1.00525706541569 785.190
+## Month 121 98.9156631762375 40.9433962264157 1.00528306756660 847.617
+## Month 122  0.0000000000000 41.1597029550861 1.00528323945573 810.718
+## Month 123  0.0000000000000 41.3771595217244 1.00528341148712 773.405
+## Month 124 98.9156631762375 41.5957720816458 1.00528358366096 835.114
+## Month 125  0.0000000000000 41.8155468233815 1.00528375597743 797.491
+## Month 126  0.0000000000000 42.0364899688590 1.00528392843670 759.446
+## Month 127 98.9156631762375 42.2586077735844 1.00528410103895 820.415
+## Month 128  0.0000000000000 42.4819065268252 1.00528427378435 782.044
+## Month 129  0.0000000000000 42.7063925517943 1.00528444667310 743.245
+## Month 130 98.9156631762375 42.9320722058347 1.00528461970536 803.452
+## Month 131  0.0000000000000 43.1589518806054 1.00528479288131 764.311
+## Month 132  0.0000000000000 43.3870380022686 1.00528496620113 724.734
+## Month 133 98.9156631762375 43.8325471698116 1.00531240130292 783.960
+## Month 134  0.0000000000000 44.0654032505068 1.00531259832373 743.825
+## Month 135  0.0000000000000 44.2995050379501 1.00531279551914 703.242
+## Month 136 98.9156631762375 44.5348592498161 1.00531299288938 761.648
+## Month 137  0.0000000000000 44.7714726403400 1.00531319043468 720.686
+## Month 138  0.0000000000000 45.0093520005191 1.00531338815527 679.266
+## Month 139 98.9156631762375 45.2485041583150 1.00531358605139 736.828
+## Month 140  0.0000000000000 45.4889359788567 1.00531378412326 695.013
+## Month 141  0.0000000000000 45.7306543646453 1.00531398237113 652.732
+## Month 142 98.9156631762375 45.9736662557595 1.00531418079524 709.424
+## Month 143  0.0000000000000 46.2179786300624 1.00531437939580 666.731
+## Month 144  0.0000000000000 46.4635985034096 1.00531457817307 623.564
+## Month 145 98.9156631762375 47.0518867924531 1.00534508948285 679.038
+## Month 146  0.0000000000000 47.3033833376956 1.00534531652953 635.111
+## Month 147  0.0000000000000 47.5562348945532 1.00534554379221 590.696
+## Month 148 98.9156631762375 47.8104488307746 1.00534577127120 645.232
+## Month 149  0.0000000000000 48.0660325545975 1.00534599896682 600.358
+## Month 150  0.0000000000000 48.3229935149733 1.00534622687936 554.987
+## Month 151 98.9156631762375 48.5813392017940 1.00534645500914 608.557
+## Month 152  0.0000000000000 48.8410771461200 1.00534668335647 562.709
+## Month 153  0.0000000000000 49.1022149204091 1.00534691192166 516.353
+## Month 154 98.9156631762375 49.3647601387470 1.00534714070502 568.930
+## Month 155  0.0000000000000 49.6287204570787 1.00534736970688 522.078
+## Month 156  0.0000000000000 49.8941035734419 1.00534759892753 474.709
+## Month 157 98.9156631762375 50.7665094339612 1.00538280925509 525.672
+## Month 158  0.0000000000000 51.0397758707908 1.00538307359611 477.188
+## Month 159  0.0000000000000 51.3145267406324 1.00538333820851 428.166
+## Month 160 98.9156631762375 51.5907701930868 1.00538360309269 478.051
+## Month 161  0.0000000000000 51.8685144230526 1.00538386824907 428.477
+## Month 162  0.0000000000000 52.1477676709814 1.00538413367808 378.355
+## Month 163 98.9156631762375 52.4285382231354 1.00538439938013 427.130
+## Month 164  0.0000000000000 52.7108344118452 1.00538466535565 376.435
+## Month 165  0.0000000000000 52.9946646157699 1.00538493160505 325.182
+## Month 166 98.9156631762375 53.2800372601586 1.00538519812877 372.814
+## Month 167  0.0000000000000 53.5669608171128 1.00538546492722 320.967
+## Month 168  0.0000000000000 53.8554438058513 1.00538573200084 268.550
+## Month 169 98.9156631762375 54.5636792452831 1.00542137017008 314.598
+## Month 170  0.0000000000000 54.8594891483132 1.00542167556883 261.147
+## Month 171  0.0000000000000 55.1569195003468 1.00542198130458 207.107
+## Month 172 98.9156631762375 55.4559792866957 1.00542228737789 251.925
+## Month 173  0.0000000000000 55.7566775432104 1.00542259378933 197.232
+## Month 174  0.0000000000000 56.0590233565697 1.00542290053944 141.939
+## Month 175 98.9156631762375 56.3630258645707 1.00542320762881 185.492
+## Month 176  0.0000000000000 56.6686942564221 1.00542351505798 129.522
+## Month 177  0.0000000000000 56.9760377730377 1.00542382282752  72.940
+## Month 178 98.9156631762375 57.2850657073327 1.00542413093800 115.192
+## Month 179  0.0000000000000 57.5957874045211 1.00542443938998  57.908
+## Month 180  0.0000000000000 57.9082122624153 1.00542474818404   0.000</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>Prem&lt;-<span class="st"> </span><span class="kw">aD</span>(<span class="dt">x=</span><span class="dv">20</span>, <span class="dt">h=</span><span class="dv">5</span>, <span class="dt">n=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">2</span>, <span class="dt">i=</span><span class="fl">0.055</span>, <span class="dt">data=</span> CSO80MANB, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;intra&quot;</span>, <span class="dt">cap=</span><span class="dv">12000</span>) <span class="co">#Actuarial present value of a decreasing life annuity</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>Annualized_Prem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">20</span>, <span class="dt">m=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">12</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">data=</span>CSO80MANB, <span class="dt">i=</span><span class="fl">0.055</span>) <span class="co">#Annualized value of the premium to be paid monthly</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="kw">V_aD</span>(<span class="dt">px=</span> Annualized_Prem<span class="op">/</span><span class="dv">12</span> ,<span class="dt">x=</span><span class="dv">20</span>,<span class="dt">h=</span><span class="dv">5</span>,<span class="dt">n=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">2</span>, <span class="dt">premperyear =</span> <span class="dv">12</span>, <span class="dt">cantprem =</span> <span class="dv">60</span>, <span class="dt">i=</span><span class="fl">0.055</span>, <span class="dt">data=</span> CSO80MANB, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;intra&quot;</span>, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">t=</span><span class="dv">120</span>) <span class="co">#Reserve up to the month 120</span></span></code></pre></div>
+<pre><code>##                    Premium  Risk                E    Reserve
+## Month 1   4392.88556943658     0 1.00451476150400   4412.718
+## Month 2   4392.88556943658     0 1.00453523701749   8845.539
+## Month 3   4392.88556943658     0 1.00455589909974  13298.738
+## Month 4   4392.88556943658     0 1.00457675031237  17772.594
+## Month 5   4392.88556943658     0 1.00459779326412  22267.392
+## Month 6   4392.88556943658     0 1.00461903061196  26783.422
+## Month 7   4392.88556943658     0 1.00464046506213  31320.980
+## Month 8   4392.88556943658     0 1.00466209937138  35880.367
+## Month 9   4392.88556943658     0 1.00468393634809  40461.890
+## Month 10  4392.88556943658     0 1.00470597885349  45065.861
+## Month 11  4392.88556943658     0 1.00472822980296  49692.599
+## Month 12  4392.88556943658     0 1.00475069216725  54342.428
+## Month 13  4392.88556943658     0 1.00451555735767  59000.536
+## Month 14  4392.88556943658     0 1.00453604010695  63680.977
+## Month 15  4392.88556943658     0 1.00455670952411  68384.055
+## Month 16  4392.88556943658     0 1.00457756817260  73110.082
+## Month 17  4392.88556943658     0 1.00459861866303  77859.375
+## Month 18  4392.88556943658     0 1.00461986365425  82632.254
+## Month 19  4392.88556943658     0 1.00464130585447  87429.050
+## Month 20  4392.88556943658     0 1.00466294802243  92250.097
+## Month 21  4392.88556943658     0 1.00468479296854  97095.735
+## Month 22  4392.88556943658     0 1.00470684355613 101966.311
+## Month 23  4392.88556943658     0 1.00472910270272 106862.180
+## Month 24  4392.88556943658     0 1.00475157338124 111783.703
+## Month 25  4392.88556943658     0 1.00451396212219 116701.005
+## Month 26  4392.88556943658     0 1.00453443036912 121642.982
+## Month 27  4392.88556943658     0 1.00455508508527 126609.972
+## Month 28  4392.88556943658     0 1.00457592883043 131602.317
+## Month 29  4392.88556943658     0 1.00459696421150 136620.368
+## Month 30  4392.88556943658     0 1.00461819388351 141664.480
+## Month 31  4392.88556943658     0 1.00463962055075 146735.016
+## Month 32  4392.88556943658     0 1.00466124696798 151832.346
+## Month 33  4392.88556943658     0 1.00468307594151 156956.847
+## Month 34  4392.88556943658     0 1.00470511033050 162108.900
+## Month 35  4392.88556943658     0 1.00472735304817 167288.899
+## Month 36  4392.88556943658     0 1.00474980706306 172497.240
+## Month 37  4392.88556943658     0 1.00451157654132 177688.179
+## Month 38  4392.88556943658     0 1.00453202311047 182906.260
+## Month 39  4392.88556943658     0 1.00455265585200 188151.854
+## Month 40  4392.88556943658     0 1.00457347732029 193425.338
+## Month 41  4392.88556943658     0 1.00459449011664 198727.098
+## Month 42  4392.88556943658     0 1.00461569689038 204057.524
+## Month 43  4392.88556943658     0 1.00463710034000 209417.015
+## Month 44  4392.88556943658     0 1.00465870321426 214805.977
+## Month 45  4392.88556943658     0 1.00468050831338 220224.825
+## Month 46  4392.88556943658     0 1.00470251849027 225673.979
+## Month 47  4392.88556943658     0 1.00472473665174 231153.870
+## Month 48  4392.88556943658     0 1.00474716575980 236664.935
+## Month 49  4392.88556943658     0 1.00450838664154 242144.603
+## Month 50  4392.88556943658     0 1.00452880424209 247654.008
+## Month 51  4392.88556943658     0 1.00454940761861 253193.558
+## Month 52  4392.88556943658     0 1.00457019931821 258763.665
+## Month 53  4392.88556943658     0 1.00459118193476 264364.750
+## Month 54  4392.88556943658     0 1.00461235810999 269997.242
+## Month 55  4392.88556943658     0 1.00463373053460 275661.578
+## Month 56  4392.88556943658     0 1.00465530194939 281358.201
+## Month 57  4392.88556943658     0 1.00467707514644 287087.566
+## Month 58  4392.88556943658     0 1.00469905297030 292850.134
+## Month 59  4392.88556943658     0 1.00472123831924 298646.374
+## Month 60  4392.88556943658     0 1.00474363414655 304476.767
+## Month 61     0.00000000000 60000 1.00450440335003 245577.989
+## Month 62     0.00000000000     0 1.00452478480587 246689.177
+## Month 63     0.00000000000     0 1.00454535154347 247810.466
+## Month 64     0.00000000000     0 1.00456610610088 248941.995
+## Month 65     0.00000000000     0 1.00458705106272 250083.905
+## Month 66     0.00000000000     0 1.00460818906125 251236.338
+## Month 67     0.00000000000 54000 1.00462952277747 198149.449
+## Month 68     0.00000000000     0 1.00465105494227 199071.053
+## Month 69     0.00000000000     0 1.00467278833756 200001.269
+## Month 70     0.00000000000     0 1.00469472579752 200940.221
+## Month 71     0.00000000000     0 1.00471687020977 201888.029
+## Month 72     0.00000000000     0 1.00473922451671 202844.822
+## Month 73     0.00000000000 48000 1.00450121622222 155541.812
+## Month 74     0.00000000000     0 1.00452156878097 156245.105
+## Month 75     0.00000000000     0 1.00454210622668 156954.787
+## Month 76     0.00000000000     0 1.00456283109019 157670.945
+## Month 77     0.00000000000     0 1.00458374594871 158393.669
+## Month 78     0.00000000000     0 1.00460485342695 159123.048
+## Month 79     0.00000000000 42000 1.00462615619818 117664.878
+## Month 80     0.00000000000     0 1.00464765698535 118211.744
+## Month 81     0.00000000000     0 1.00466935856228 118763.717
+## Month 82     0.00000000000     0 1.00469126375487 119320.869
+## Month 83     0.00000000000     0 1.00471337544224 119883.273
+## Month 84     0.00000000000     0 1.00473569655810 120451.004
+## Month 85     0.00000000000 36000 1.00449961769967  84831.001
+## Month 86     0.00000000000     0 1.00451995577266  85214.433
+## Month 87     0.00000000000     0 1.00454047853483  85601.348
+## Month 88     0.00000000000     0 1.00456118851336  85991.792
+## Month 89     0.00000000000     0 1.00458208828180  86385.814
+## Month 90     0.00000000000     0 1.00460318046105  86783.463
+## Month 91     0.00000000000 30000 1.00462446772051  57046.056
+## Month 92     0.00000000000     0 1.00464595277916  57311.090
+## Month 93     0.00000000000     0 1.00466763840679  57578.597
+## Month 94     0.00000000000     0 1.00468952742511  57848.613
+## Month 95     0.00000000000     0 1.00471162270902  58121.174
+## Month 96     0.00000000000     0 1.00473392718786  58396.316
+## Month 97     0.00000000000 24000 1.00449882305048  34551.059
+## Month 98     0.00000000000     0 1.00451915392432  34707.200
+## Month 99     0.00000000000     0 1.00453966938906  34864.759
+## Month 100    0.00000000000     0 1.00456037197009  35023.756
+## Month 101    0.00000000000     0 1.00458126423911  35184.209
+## Month 102    0.00000000000     0 1.00460234881516  35346.139
+## Month 103    0.00000000000 18000 1.00462362836569  17426.341
+## Month 104    0.00000000000     0 1.00464510560774  17507.288
+## Month 105    0.00000000000     0 1.00466678330906  17588.991
+## Month 106    0.00000000000     0 1.00468866428930  17671.460
+## Month 107    0.00000000000     0 1.00471075142127  17754.705
+## Month 108    0.00000000000     0 1.00473304763213  17838.739
+## Month 109    0.00000000000 12000 1.00449961854055   5865.011
+## Month 110    0.00000000000     0 1.00451995662117   5891.521
+## Month 111    0.00000000000     0 1.00454047939105   5918.271
+## Month 112    0.00000000000     0 1.00456118937742   5945.266
+## Month 113    0.00000000000     0 1.00458208915380   5972.507
+## Month 114    0.00000000000     0 1.00460318134109   6000.000
+## Month 115    0.00000000000  6000 1.00462446860870      0.000
+## Month 116    0.00000000000     0 1.00464595367563      0.000
+## Month 117    0.00000000000     0 1.00466763931165      0.000
+## Month 118    0.00000000000     0 1.00468952833848      0.000
+## Month 119    0.00000000000     0 1.00471162363101      0.000
+## Month 120    0.00000000000     0 1.00473392811860      0.000</code></pre>
+</div>
+<div id="life-tables" class="section level2">
+<h2>Life tables</h2>
+<p>Creates a mortality table under a certain law of mortality:</p>
+<ul>
+<li><code>Table_Moivre(x0, omega)</code> de Moivre’s law</li>
+<li><code>Table_Dormoy(x0, omega, a)</code> Dormoy’s law</li>
+<li><code>Table_Makeham(x0, omega, A, B, C)</code> Makeham’s law</li>
+<li><code>Table_Gompertz(x0, omega, B, C)</code> Gompertz’s law</li>
+</ul>
+<p>Creates a fractional mortality table for a given mortality table:</p>
+<p><code>Fractional_table(data, frac, i = 0.04, assumption = &quot;UDD&quot;)</code></p>
+<div id="examples-1" class="section level4">
+<h4>Examples</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">Table_Gompertz</span>(<span class="dt">x0=</span><span class="dv">0</span>, <span class="dt">omega=</span><span class="dv">100</span>, <span class="dt">B=</span><span class="fl">0.00008</span>, <span class="dt">C=</span> <span class="fl">1.07</span>)</span></code></pre></div>
+<pre><code>##      x                    q
+## 1    0 8.27650031608451e-05
+## 2    1 8.85582968412901e-05
+## 3    2 9.47570839078260e-05
+## 4    3 1.01389743511482e-04
+## 5    4 1.08486640563732e-04
+## 6    5 1.16080264626173e-04
+## 7    6 1.24205378506992e-04
+## 8    7 1.32899177240020e-04
+## 9    8 1.42201458170454e-04
+## 10   9 1.52154802922966e-04
+## 11  10 1.62804772078640e-04
+## 12  11 1.74200113447043e-04
+## 13  12 1.86392984881212e-04
+## 14  13 1.99439192646977e-04
+## 15  14 2.13398446429203e-04
+## 16  15 2.28334632134786e-04
+## 17  16 2.44316103726439e-04
+## 18  17 2.61415995413961e-04
+## 19  18 2.79712555615319e-04
+## 20  19 2.99289504199551e-04
+## 21  20 3.20236414628194e-04
+## 22  21 3.42649122722305e-04
+## 23  22 3.66630163900372e-04
+## 24  23 3.92289240859212e-04
+## 25  24 4.19743723806043e-04
+## 26  25 4.49119185493174e-04
+## 27  26 4.80549973459587e-04
+## 28  27 5.14179822049154e-04
+## 29  28 5.50162506949725e-04
+## 30  29 5.88662545181973e-04
+## 31  30 6.29855943667379e-04
+## 32  31 6.73930999714023e-04
+## 33  32 7.21089156986321e-04
+## 34  33 7.71545920760452e-04
+## 35  34 8.25531836527116e-04
+## 36  35 8.83293536269592e-04
+## 37  36 9.45094857034534e-04
+## 38  37 1.01121803672155e-03
+## 39  38 1.08196499233781e-03
+## 40  39 1.15765868631235e-03
+## 41  40 1.23864458682987e-03
+## 42  41 1.32529222852884e-03
+## 43  42 1.41799688032374e-03
+## 44  43 1.51718132754042e-03
+## 45  44 1.62329777601722e-03
+## 46  45 1.73682988630652e-03
+## 47  46 1.85829494662337e-03
+## 48  47 1.98824619372895e-03
+## 49  48 2.12727529150059e-03
+## 50  49 2.27601497753993e-03
+## 51  50 2.43514188879312e-03
+## 52  51 2.60537957781315e-03
+## 53  52 2.78750173198106e-03
+## 54  53 2.98233560871353e-03
+## 55  54 3.19076570043075e-03
+## 56  55 3.41373764382646e-03
+## 57  56 3.65226238878280e-03
+## 58  57 3.90742064309191e-03
+## 59  58 4.18036760999085e-03
+## 60  59 4.47233803637892e-03
+## 61  60 4.78465159046115e-03
+## 62  61 5.11871858844659e-03
+## 63  62 5.47604609081420e-03
+## 64  63 5.85824438953897e-03
+## 65  64 6.26703390853178e-03
+## 66  65 6.70425254037821e-03
+## 67  66 7.17186344325305e-03
+## 68  67 7.67196332261288e-03
+## 69  68 8.20679122292201e-03
+## 70  69 8.77873785520911e-03
+## 71  70 9.39035548666611e-03
+## 72  71 1.00443684187541e-02
+## 73  72 1.07436840803292e-02
+## 74  73 1.14914047621092e-02
+## 75  74 1.22908400183185e-02
+## 76  75 1.31455197605098e-02
+## 77  76 1.40592080673154e-02
+## 78  77 1.50359177321330e-02
+## 79  78 1.60799255684395e-02
+## 80  79 1.71957884894309e-02
+## 81  80 1.83883603749084e-02
+## 82  81 1.96628097336476e-02
+## 83  82 2.10246381637412e-02
+## 84  83 2.24796996064548e-02
+## 85  84 2.40342203807868e-02
+## 86  85 2.56948199759811e-02
+## 87  86 2.74685325674776e-02
+## 88  87 2.93628292079563e-02
+## 89  88 3.13856406289482e-02
+## 90  89 3.35453805696574e-02
+## 91  90 3.58509695278197e-02
+## 92  91 3.83118588022512e-02
+## 93  92 4.09380546678230e-02
+## 94  93 4.37401424905043e-02
+## 95  94 4.67293105523925e-02
+## 96  95 4.99173733138228e-02
+## 97  96 5.33167937912082e-02
+## 98  97 5.69407046747022e-02
+## 99  98 6.08029277485795e-02
+## 100 99 1.00000000000000e+00</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>MortTable&lt;-<span class="kw">Table_Moivre</span>(<span class="dv">0</span>,<span class="dv">100</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>Px&lt;-<span class="st"> </span><span class="kw">A.</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">n=</span><span class="dv">20</span>,<span class="dt">i=</span><span class="fl">0.03</span>,<span class="dt">data=</span> MortTable, <span class="dt">cap=</span><span class="dv">10000</span>)<span class="op">+</span><span class="kw">E</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">n=</span><span class="dv">20</span>, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">data=</span>MortTable, <span class="dt">cap=</span><span class="dv">10000</span>) <span class="co">#A Dotal coverage</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>AnnualPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Px, <span class="dt">x=</span><span class="dv">35</span>, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">6</span>, <span class="dt">data=</span> MortTable, <span class="dt">effect =</span> <span class="st">&quot;yes&quot;</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>) <span class="co">#The annualized value of the premium</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>AnnualPrem<span class="op">/</span><span class="dv">6</span> <span class="co">#The premium to be paid every two months</span></span></code></pre></div>
+<pre><code>## [1] 132.287480056111</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">Fractional_table</span>(CSO58MANB, <span class="dt">frac=</span><span class="dv">3</span>, <span class="dt">i=</span> <span class="fl">0.047</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>)</span></code></pre></div>
+<pre><code>##                      X                    Q
+## 1    0.000000000000000 0.002360000000000000
+## 2    0.333333333333333 0.002365582775349826
+## 3    0.666666666666667 0.002371192026364440
+## 4    1.000000000000000 0.000586666666666667
+## 5    1.333333333333333 0.000587011046480602
+## 6    1.666666666666667 0.000587355830841521
+## 7    2.000000000000000 0.000506666666666667
+## 8    2.333333333333333 0.000506923507910675
+## 9    2.666666666666667 0.000507180609684480
+## 10   3.000000000000000 0.000486666666666667
+## 11   3.333333333333333 0.000486903626431530
+## 12   3.666666666666667 0.000487140817061940
+## 13   4.000000000000000 0.000466666666666667
+## 14   4.333333333333333 0.000466884546121523
+## 15   4.666666666666667 0.000467102629120512
+## 16   5.000000000000000 0.000450000000000000
+## 17   5.333333333333333 0.000450202591166025
+## 18   5.666666666666667 0.000450405364828346
+## 19   6.000000000000000 0.000433333333333333
+## 20   6.333333333333333 0.000433521192516757
+## 21   6.666666666666667 0.000433709214652699
+## 22   7.000000000000000 0.000420000000000000
+## 23   7.333333333333334 0.000420176474119130
+## 24   7.666666666666666 0.000420353096601145
+## 25   8.000000000000000 0.000410000000000000
+## 26   8.333333333333334 0.000410168168949269
+## 27   8.666666666666666 0.000410336475910246
+## 28   9.000000000000000 0.000403333333333333
+## 29   9.333333333333334 0.000403496076750956
+## 30   9.666666666666666 0.000403658951554254
+## 31  10.000000000000000 0.000403333333333333
+## 32  10.333333333333334 0.000403496076750956
+## 33  10.666666666666666 0.000403658951554254
+## 34  11.000000000000000 0.000410000000000000
+## 35  11.333333333333334 0.000410168168949269
+## 36  11.666666666666666 0.000410336475910246
+## 37  12.000000000000000 0.000420000000000000
+## 38  12.333333333333334 0.000420176474119130
+## 39  12.666666666666666 0.000420353096601145
+## 40  13.000000000000000 0.000440000000000000
+## 41  13.333333333333334 0.000440193685221497
+## 42  13.666666666666666 0.000440387541036112
+## 43  14.000000000000000 0.000463333333333333
+## 44  14.333333333333334 0.000463548110624589
+## 45  14.666666666666666 0.000463763087127405
+## 46  15.000000000000000 0.000486666666666667
+## 47  15.333333333333332 0.000486903626431530
+## 48  15.666666666666668 0.000487140817061940
+## 49  16.000000000000000 0.000513333333333333
+## 50  16.333333333333332 0.000513596979782955
+## 51  16.666666666666668 0.000513860897187779
+## 52  17.000000000000000 0.000540000000000000
+## 53  17.333333333333332 0.000540291757549076
+## 54  17.666666666666668 0.000540583830536980
+## 55  18.000000000000000 0.000563333333333333
+## 56  18.333333333333332 0.000563650856649246
+## 57  18.666666666666668 0.000563968738111606
+## 58  19.000000000000000 0.000580000000000000
+## 59  19.333333333333332 0.000580336595225231
+## 60  19.666666666666668 0.000580673581354371
+## 61  20.000000000000000 0.000596666666666667
+## 62  20.333333333333332 0.000597022890324560
+## 63  20.666666666666668 0.000597379539583903
+## 64  21.000000000000000 0.000610000000000000
+## 65  21.333333333333332 0.000610372327119543
+## 66  21.666666666666668 0.000610745109033020
+## 67  22.000000000000000 0.000620000000000000
+## 68  22.333333333333332 0.000620384638475855
+## 69  22.666666666666668 0.000620769754495574
+## 70  23.000000000000000 0.000630000000000000
+## 71  23.333333333333332 0.000630397150204629
+## 72  23.666666666666668 0.000630794801449827
+## 73  24.000000000000000 0.000636666666666667
+## 74  24.333333333333332 0.000637072269344816
+## 75  24.666666666666668 0.000637478389148850
+## 76  25.000000000000000 0.000643333333333333
+## 77  25.333333333333332 0.000643747477543887
+## 78  25.666666666666668 0.000644162155306494
+## 79  26.000000000000000 0.000653333333333333
+## 80  26.333333333333332 0.000653760456831797
+## 81  26.666666666666668 0.000654188139168513
+## 82  27.000000000000000 0.000663333333333333
+## 83  27.333333333333332 0.000663773636512220
+## 84  27.666666666666668 0.000664214524602639
+## 85  28.000000000000000 0.000676666666666667
+## 86  28.333333333333332 0.000677124854484868
+## 87  28.666666666666668 0.000677583663224230
+## 88  29.000000000000000 0.000693333333333333
+## 89  29.333333333333332 0.000693814377968725
+## 90  29.666666666666668 0.000694296090578936
+## 91  30.000000000000000 0.000710000000000000
+## 92  30.333333333333332 0.000710504458165297
+## 93  30.666666666666668 0.000711009633679825
+## 94  31.000000000000000 0.000730000000000000
+## 95  31.333333333333336 0.000730533289301190
+## 96  31.666666666666664 0.000731067358343181
+## 97  32.000000000000000 0.000750000000000000
+## 98  32.333333333333336 0.000750562922191644
+## 99  32.666666666666664 0.000751126690035052
+## 100 33.000000000000000 0.000773333333333333
+## 101 33.333333333333336 0.000773931840623415
+## 102 33.666666666666664 0.000774531275038727
+## 103 34.000000000000000 0.000800000000000000
+## 104 34.333333333333336 0.000800640512409928
+## 105 34.666666666666664 0.000801282051282051
+## 106 35.000000000000000 0.000836666666666667
+## 107 35.333333333333336 0.000837367263944167
+## 108 35.666666666666664 0.000838069035519436
+## 109 36.000000000000000 0.000880000000000000
+## 110 36.333333333333336 0.000880775082072223
+## 111 36.666666666666664 0.000881551530694021
+## 112 37.000000000000000 0.000933333333333333
+## 113 37.333333333333336 0.000934205258241025
+## 114 37.666666666666664 0.000935078813785733
+## 115 38.000000000000000 0.001003333333333333
+## 116 38.333333333333336 0.001004341022158899
+## 117 38.666666666666664 0.001005350737145873
+## 118 39.000000000000000 0.001083333333333333
+## 119 39.333333333333336 0.001084508217235338
+## 120 39.666666666666664 0.001085685652246534
+## 121 40.000000000000000 0.001176666666666667
+## 122 40.333333333333336 0.001178052842177629
+## 123 40.666666666666664 0.001179442287516622
+## 124 41.000000000000000 0.001280000000000000
+## 125 41.333333333333336 0.001281640499839795
+## 126 41.666666666666664 0.001283285210137953
+## 127 42.000000000000000 0.001390000000000000
+## 128 42.333333333333336 0.001391934789357206
+## 129 42.666666666666664 0.001393874972423337
+## 130 43.000000000000000 0.001510000000000000
+## 131 43.333333333333336 0.001512283548157718
+## 132 43.666666666666664 0.001514574013520833
+## 133 44.000000000000000 0.001640000000000000
+## 134 44.333333333333336 0.001642694018189831
+## 135 44.666666666666664 0.001645396901838029
+## 136 45.000000000000000 0.001783333333333333
+## 137 45.333333333333336 0.001786519292738717
+## 138 45.666666666666664 0.001789716656073328
+## 139 46.000000000000000 0.001943333333333333
+## 140 46.333333333333336 0.001947117231152540
+## 141 46.666666666666664 0.001950915893104533
+## 142 47.000000000000000 0.002120000000000000
+## 143 47.333333333333336 0.002124503948370546
+## 144 47.666666666666664 0.002129027074797140
+## 145 48.000000000000000 0.002316666666666667
+## 146 48.333333333333336 0.002322046073403384
+## 147 48.666666666666664 0.002327450520746124
+## 148 49.000000000000000 0.002533333333333333
+## 149 49.333333333333336 0.002539767410773960
+## 150 49.666666666666664 0.002546234253551327
+## 151 50.000000000000000 0.002773333333333333
+## 152 50.333333333333336 0.002781046101187292
+## 153 50.666666666666664 0.002788801887804354
+## 154 51.000000000000000 0.003036666666666667
+## 155 51.333333333333336 0.003045916098552605
+## 156 51.666666666666664 0.003055222048575012
+## 157 52.000000000000000 0.003320000000000000
+## 158 52.333333333333336 0.003331059116266003
+## 159 52.666666666666664 0.003342192155915278
+## 160 53.000000000000000 0.003630000000000000
+## 161 53.333333333333336 0.003643224906410269
+## 162 53.666666666666664 0.003656546527791768
+## 163 54.000000000000000 0.003966666666666667
+## 164 54.333333333333336 0.003982463772966099
+## 165 54.666666666666664 0.003998387205160944
+## 166 55.000000000000000 0.004333333333333333
+## 167 55.333333333333336 0.004352192835621024
+## 168 55.666666666666664 0.004371217215870881
+## 169 56.000000000000000 0.004736666666666667
+## 170 56.333333333333336 0.004759209455454000
+## 171 56.666666666666664 0.004781967842023435
+## 172 57.000000000000000 0.005180000000000000
+## 173 57.333333333333336 0.005206972115558593
+## 174 57.666666666666664 0.005234226587445940
+## 175 58.000000000000000 0.005666666666666667
+## 176 58.333333333333336 0.005698960777740530
+## 177 58.666666666666664 0.005731625084288604
+## 178 59.000000000000000 0.006196666666666666
+## 179 59.333333333333336 0.006235304771903227
+## 180 59.666666666666664 0.006274427741138510
+## 181 60.000000000000000 0.006780000000000000
+## 182 60.333333333333336 0.006826282193270373
+## 183 60.666666666666664 0.006873200600137869
+## 184 61.000000000000000 0.007413333333333333
+## 185 61.333333333333336 0.007468701305679436
+## 186 61.666666666666664 0.007524902555218709
+## 187 62.000000000000000 0.008103333333333332
+## 188 62.333333333333336 0.008169533788801924
+## 189 62.666666666666664 0.008236824807378243
+## 190 63.000000000000000 0.008856666666666665
+## 191 63.333333333333329 0.008935808140766723
+## 192 63.666666666666671 0.009016376753561418
+## 193 64.000000000000000 0.009679999999999999
+## 194 64.333333333333329 0.009774618305194280
+## 195 64.666666666666671 0.009871104584760973
+## 196 65.000000000000000 0.010583333333333333
+## 197 65.333333333333329 0.010696538364356103
+## 198 65.666666666666671 0.010812191384301039
+## 199 66.000000000000000 0.011580000000000000
+## 200 66.333333333333329 0.011715667428825804
+## 201 66.666666666666671 0.011854551410671143
+## 202 67.000000000000000 0.012679999999999999
+## 203 67.333333333333329 0.012842847303812339
+## 204 67.666666666666671 0.013009931872281047
+## 205 68.000000000000000 0.013893333333333334
+## 206 68.333333333333329 0.014089077584575029
+## 207 68.666666666666671 0.014290416369521093
+## 208 69.000000000000000 0.015203333333333333
+## 209 69.333333333333329 0.015438043047803439
+## 210 69.666666666666671 0.015680113312110232
+## 211 70.000000000000000 0.016596666666666666
+## 212 70.333333333333329 0.016876764704885416
+## 213 70.666666666666671 0.017166479337475261
+## 214 71.000000000000000 0.018049999999999997
+## 215 71.333333333333329 0.018381791333570954
+## 216 71.666666666666671 0.018726008922087350
+## 217 72.000000000000000 0.019549999999999998
+## 218 72.333333333333329 0.019939823550410522
+## 219 72.666666666666671 0.020345509418253718
+## 220 73.000000000000000 0.021086666666666663
+## 221 73.333333333333329 0.021540892281918043
+## 222 73.666666666666671 0.022015117557804470
+## 223 74.000000000000000 0.022706666666666667
+## 224 74.333333333333329 0.023234238781941963
+## 225 74.666666666666671 0.023786909517557336
+## 226 75.000000000000000 0.024456666666666668
+## 227 75.333333333333329 0.025069790168213955
+## 228 75.666666666666671 0.025714445932021619
+## 229 76.000000000000000 0.026393333333333331
+## 230 76.333333333333329 0.027108825603768805
+## 231 76.666666666666671 0.027864191100913555
+## 232 77.000000000000000 0.028566666666666664
+## 233 77.333333333333329 0.029406718594516691
+## 234 77.666666666666671 0.030297673760871099
+## 235 78.000000000000000 0.031019999999999999
+## 236 78.333333333333329 0.032013044644884310
+## 237 78.666666666666671 0.033071772783487566
+## 238 79.000000000000000 0.033729999999999996
+## 239 79.333333333333329 0.034907427530607382
+## 240 79.666666666666671 0.036170030239989701
+## 241 80.000000000000000 0.036659999999999998
+## 242 80.333333333333329 0.038055099964706122
+## 243 80.666666666666671 0.039560581862131482
+## 244 81.000000000000000 0.039783333333333330
+## 245 81.333333333333329 0.041431621335462479
+## 246 81.666666666666671 0.043222395248614778
+## 247 82.000000000000000 0.043056666666666667
+## 248 82.333333333333329 0.044993956451618522
+## 249 82.666666666666671 0.047113792373963223
+## 250 83.000000000000000 0.046460000000000001
+## 251 83.333333333333329 0.048723703253140925
+## 252 83.666666666666671 0.051219297085152361
+## 253 84.000000000000000 0.050003333333333330
+## 254 84.333333333333329 0.052635272404464570
+## 255 84.666666666666671 0.055559670812376387
+## 256 85.000000000000000 0.053713333333333335
+## 257 85.333333333333329 0.056762221455091126
+## 258 85.666666666666671 0.060178061933286529
+## 259 86.000000000000000 0.057606666666666667
+## 260 86.333333333333329 0.061128049858869972
+## 261 86.666666666666671 0.065107973296764571
+## 262 87.000000000000000 0.061709999999999994
+## 263 87.333333333333329 0.065768579010753600
+## 264 87.666666666666671 0.070398594537863055
+## 265 88.000000000000000 0.066083333333333327
+## 266 88.333333333333329 0.070759346836798423
+## 267 88.666666666666671 0.076147493758402143
+## 268 89.000000000000000 0.070819999999999994
+## 269 89.333333333333329 0.076217740373232312
+## 270 89.666666666666671 0.082506174565450383
+## 271 90.000000000000000 0.076046666666666665
+## 272 90.333333333333329 0.082305744157352825
+## 273 90.666666666666671 0.089687544226565816
+## 274 91.000000000000000 0.081923333333333320
+## 275 91.333333333333329 0.089233651510585529
+## 276 91.666666666666671 0.097976447700979866
+## 277 92.000000000000000 0.088643333333333324
+## 278 92.333333333333329 0.097265249243801352
+## 279 92.666666666666671 0.107745103600281972
+## 280 93.000000000000000 0.096433333333333329
+## 281 93.333333333333329 0.106725200132807022
+## 282 93.666666666666671 0.119476336003964637
+## 283 94.000000000000000 0.105553333333333332
+## 284 94.333333333333329 0.118009644696534924
+## 285 94.666666666666671 0.133799246201429856
+## 286 95.000000000000000 0.117079999999999990
+## 287 95.333333333333329 0.132605445566982255
+## 288 95.666666666666671 0.152877885720254847
+## 289 96.000000000000000 0.133520000000000000
+## 290 96.333333333333329 0.154094728095282046
+## 291 96.666666666666671 0.182165466055446396
+## 292 97.000000000000000 0.162806666666666655
+## 293 97.333333333333329 0.194467227800826564
+## 294 97.666666666666671 0.241414421004764790
+## 295 98.000000000000000 0.222716666666666674
+## 296 98.333333333333329 0.286532152582713306
+## 297 98.666666666666671 0.401604856644827812
+## 298 99.000000000000000 0.333333333333333315
+## 299 99.333333333333329 0.499999999999999944
+## 300 99.666666666666671 0.999999999999999889</code></pre>
+</div>
+</div>
+<div id="loan" class="section level2">
+<h2>Loan</h2>
+<p><code>Loan_amortization(V0, n, i, i2 = 0, alic = 0, ins = 0, method)</code> For calculating the loan amortization schedule.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">130000</span>,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">i=</span><span class="fl">0.04</span>,<span class="dt">method =</span> <span class="st">&quot;interest_only&quot;</span>)</span></code></pre></div>
+<pre><code>##    Period Payment  Int TAX  Amort Insurance Outstanding_debt
+## 1       0       0    0   0      0         0           130000
+## 2       1    5200 5200   0      0         0           130000
+## 3       2    5200 5200   0      0         0           130000
+## 4       3    5200 5200   0      0         0           130000
+## 5       4    5200 5200   0      0         0           130000
+## 6       5    5200 5200   0      0         0           130000
+## 7       6    5200 5200   0      0         0           130000
+## 8       7    5200 5200   0      0         0           130000
+## 9       8    5200 5200   0      0         0           130000
+## 10      9    5200 5200   0      0         0           130000
+## 11     10    5200 5200   0      0         0           130000
+## 12     11    5200 5200   0      0         0           130000
+## 13     12    5200 5200   0      0         0           130000
+## 14     13    5200 5200   0      0         0           130000
+## 15     14    5200 5200   0      0         0           130000
+## 16     15  135200 5200   0 130000         0                0</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">123000</span>,<span class="dt">n=</span><span class="dv">12</span>,<span class="dt">i=</span><span class="fl">0.06</span>,<span class="dt">alic=</span><span class="fl">0.21</span>,<span class="dt">method=</span><span class="st">&quot;constant_installment&quot;</span>)</span></code></pre></div>
+<pre><code>##    Period          Payment     Pure_Payment               Int             Amort
+## 1       0     0.0000000000     0.0000000000    0.000000000000     0.00000000000
+## 2       1 16220.8746138216 14671.0746138216 7380.000000000000  7291.07461382161
+## 3       2 16129.0070736875 14671.0746138216 6942.535523170704  7728.53909065091
+## 4       3 16031.6274811453 14671.0746138216 6478.823177731649  8192.25143608996
+## 5       4 15928.4051130505 14671.0746138216 5987.288091566251  8683.78652225536
+## 6       5 15818.9894028701 14671.0746138216 5466.260900230930  9204.81371359068
+## 7       6 15703.0087500789 14671.0746138216 4913.972077415489  9757.10253640612
+## 8       7 15580.0692581201 14671.0746138216 4328.545925231122 10342.52868859049
+## 9       8 15449.7533966439 14671.0746138216 3707.994203915693 10963.08040990592
+## 10      9 15311.6185834791 14671.0746138216 3050.209379321338 11620.86523450027
+## 11     10 15165.1956815244 14671.0746138216 2352.957465251321 12318.11714857029
+## 12     11 15009.9874054524 14671.0746138216 1613.870436337103 13057.20417748451
+## 13     12 14845.4666328161 14671.0746138216  830.438185688033 13840.63642813358
+##                  TAX Insurance     Outstanding_debt
+## 1     0.000000000000         0 1.23000000000000e+05
+## 2  1549.800000000000         0 1.15708925386178e+05
+## 3  1457.932459865848         0 1.07980386295527e+05
+## 4  1360.552867323646         0 9.97881348594375e+04
+## 5  1257.330499228913         0 9.11043483371822e+04
+## 6  1147.914789048495         0 8.18995346235915e+04
+## 7  1031.934136257253         0 7.21424320871854e+04
+## 8   908.994644298536         0 6.17999033985949e+04
+## 9   778.678782822295         0 5.08368229886890e+04
+## 10  640.543969657481         0 3.92159577541887e+04
+## 11  494.121067702777         0 2.68978406056184e+04
+## 12  338.912791630792         0 1.38406364281339e+04
+## 13  174.392018994487         0 3.07409209199250e-10</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">300000</span>,<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">i=</span><span class="fl">0.03</span>,<span class="dt">ins=</span><span class="fl">0.01</span>,<span class="dt">method =</span> <span class="st">&quot;constant_principal&quot;</span>)</span></code></pre></div>
+<pre><code>##    Period Payment Pure_Payment  Int Amort TAX Insurance Outstanding_debt
+## 1       0       0            0    0     0   0         0           300000
+## 2       1   42000        39000 9000 30000   0      3000           270000
+## 3       2   40800        38100 8100 30000   0      2700           240000
+## 4       3   39600        37200 7200 30000   0      2400           210000
+## 5       4   38400        36300 6300 30000   0      2100           180000
+## 6       5   37200        35400 5400 30000   0      1800           150000
+## 7       6   36000        34500 4500 30000   0      1500           120000
+## 8       7   34800        33600 3600 30000   0      1200            90000
+## 9       8   33600        32700 2700 30000   0       900            60000
+## 10      9   32400        31800 1800 30000   0       600            30000
+## 11     10   31200        30900  900 30000   0       300                0</code></pre>
+<p><code>Payment_Protection(x, n, k = 1, V0, i = 0.04, ip = 0.04, data, prop = 1, type = &quot;outstanding_debt&quot;, method = &quot;interest_only&quot;)</code> For calculating the actuarial present value of a loan insurance.</p>
+<p>If “outstanding_debt” is chosen, the insurance company pays the outstanding debt at the moment of the next theoretical payment. If “payments” is selected, the company takes responsibility for the payment of each installment at each accorded moment.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">Payment_Protection</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">V0=</span><span class="dv">1050000</span>,<span class="dt">i=</span><span class="fl">0.05</span>,<span class="dt">ip=</span><span class="fl">0.055</span>,<span class="dt">data=</span>CSO58MALB,<span class="dt">type=</span><span class="st">&quot;outstanding_debt&quot;</span>,<span class="dt">method=</span><span class="st">&quot;constant_principal&quot;</span>) <span class="co">#Actuarial present value of the coverage</span></span></code></pre></div>
+<pre><code>## [1] 24146.454945933</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">Payment_Protection</span>(<span class="dt">x=</span><span class="dv">30</span>,<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">k=</span><span class="dv">2</span>,<span class="dt">V0=</span><span class="dv">1000000</span>,<span class="dt">i=</span><span class="fl">0.035</span>,<span class="dt">ip=</span><span class="fl">0.06</span>,<span class="dt">data=</span>CSO80FANB,<span class="dt">type=</span><span class="st">&quot;payments&quot;</span>,<span class="dt">method=</span><span class="st">&quot;constant_instalment&quot;</span>) <span class="co">#actuarial present value of the coverage</span></span></code></pre></div>
+<pre><code>## [1] 8491.65229844342</code></pre>
+</div>
+<div id="financial" class="section level2">
+<h2>Financial</h2>
+<p><code>sf(l = 0, n, i)</code> For calculating the final value of an annuity</p>
+<p><code>af(l = 0, n, i)</code> For calculating the present value of an annuity</p>
+<p><code>Rate_converter(num, rate1, m, rate2, k, type = &quot;days&quot;)</code> For converting nominal and effective interest and discount rates.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>i&lt;-<span class="kw">Rate_converter</span>(<span class="fl">0.4</span>,<span class="st">&quot;j&quot;</span>,<span class="dv">60</span>,<span class="st">&quot;i&quot;</span>,<span class="dv">365</span>, <span class="st">&quot;days&quot;</span>) <span class="co">#Convert the annual nominal rate of 2 periods to a effective annual interest rate</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="kw">af</span>(<span class="dv">0</span>,<span class="dv">20</span>,i)<span class="op">*</span><span class="dv">1200</span> <span class="co"># Calculate the present value of an annuity-due of amount $1200 paid annually for 20 years at the rate of interest of i.</span></span></code></pre></div>
+<pre><code>## [1] 3734.61408950893</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>i&lt;-<span class="kw">Rate_converter</span>(<span class="fl">0.07</span>,<span class="st">&quot;f&quot;</span>,<span class="dv">4</span>,<span class="st">&quot;i&quot;</span>,<span class="dv">1</span>, <span class="st">&quot;frac&quot;</span>) <span class="co">#Convert the annual nominal discount rate of 4 periods to a effective annual  interest rate</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="kw">sf</span>(<span class="dv">1</span>,<span class="dv">10</span>,i)<span class="op">*</span><span class="dv">3000</span> <span class="co"># Calculate the final value of an annuity-immediate of amount $3000 paid annually for 20 years at the rate of interest of i.</span></span></code></pre></div>
+<pre><code>## [1] 42075.7904568544</code></pre>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
