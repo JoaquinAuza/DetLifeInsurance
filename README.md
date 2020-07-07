@@ -54,8 +54,10 @@ V_A.(px=Net_Premium_monthly, x=30, h=0, n=5, k = 1, cantprem = 12,
 Work in progress!
 
 - [x] Basic functionality.
-- [x] Enhance documentation.
+- [x] Enhanced documentation.
+- [x] Fix references, fix non-exporable functions.  
+- [ ] Upload to CRAN.
 - [ ] Better error handling.
-- [ ] New functions: group insurance, loan insurance reserve, stochastic valuation?...
+- [ ] New functions: group insurance, loan insurance reserves, stochastic valuation?...
 
 
