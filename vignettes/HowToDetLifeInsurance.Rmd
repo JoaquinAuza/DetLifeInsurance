@@ -24,6 +24,8 @@ In addition, 47 commonly used mortality tables are included as data.
 library(DetLifeInsurance)
 ```
 
+Be aware that functions use 15 digits when performing calculations. 
+
 ## Life insurance and annuities premiums
 
 For calculating the actuarial present value:
@@ -96,7 +98,7 @@ Calculates the reserve up to the moment 't':
 - Decreasing life insurance: ` V_AD.(px, x, h, n, k = 1, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = "none", variation ="none", cap, t) ` 
 
 ```{r}
-Prem<-av(x=45,h=7,n=13,r=0.05, i=0.045, data = CSO80FALB, cap=12000) #Actuarial present value of a varying life annuity according to a arithmetic progression
+Prem<-av(x=45,h=7,n=13,r=0.05, i=0.045, data = CSO80FALB, cap=12000) #Actuarial present value of a varying life annuity that follows an arithmetic progression
 AnnualPrem<-PremiumFrac(px1 = Prem, x=45, m=7, k=1, i=0.045,data= CSO80FALB) #Annual premium to be paid at the beginning of each year of the deferral term. 
 V_av(px= AnnualPrem, x=45, h=7, n=13, r=0.05, cantprem = 7, premperyear = 1, i=0.045, data= CSO80FALB, cap=12000, t=20) #Reserve of the coverage up to the year 20
 ```
@@ -143,7 +145,7 @@ Table_Gompertz(x0=0, omega=100, B=0.00008, C= 1.07)
 
 ```{r}
 MortTable<-Table_Moivre(0,100)
-Px<- A.(x=35,h=0,n=20,i=0.03,data= MortTable, cap=10000)+E(x=35,n=20, i=0.03, data=MortTable, cap=10000) #A Dotal coverage
+Px<- A.(x=35,h=0,n=20,i=0.03,data= MortTable, cap=10000) + E(x=35,n=20, i=0.03, data=MortTable, cap=10000) #A Dotal (endowment) coverage
 AnnualPrem<-PremiumFrac(px1 = Px, x=35, m=10, k=6, data= MortTable, effect = "yes", assumption = "UDD") #The annualized value of the premium
 AnnualPrem/6 #The premium to be paid every two months
 ```
@@ -155,7 +157,7 @@ Fractional_table(CSO58MANB, frac=3, i= 0.047, assumption = "UDD")
 ```
 
 
-## Loan 
+## Loan Amortization
 
 
 `Loan_amortization(V0, n, i, i2 = 0, alic = 0, ins = 0, method)` For calculating the loan amortization schedule.
@@ -193,7 +195,7 @@ Payment_Protection(x=30,n=10,k=2,V0=1000000,i=0.035,ip=0.06,data=CSO80FANB,type=
 ```
 
 
-## Financial 
+## Annuities and Interest Rates
 
  `sf(l = 0, n, i) ` For calculating the final value of an annuity
  

@@ -22,6 +22,8 @@
 
 
 PremiumFrac<-function(px1,x,m,k,i=0.04,data,prop=1,effect="yes",assumption){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   if(k==1){
     premium<-px1/a(x,0,m,k,i,data,prop,assumption,1)

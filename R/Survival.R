@@ -14,6 +14,8 @@
 
 
 Survival<-function(x,n,data,prop=1){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   if(x>=0 & is_integer(x)==1 & n>=0 & is_integer(n)==1 & prop>0){
     Prob<-1

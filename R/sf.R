@@ -14,6 +14,8 @@
 
 
 sf<-function(l=0,n,i){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   if(n>0 & i>0){
     VF<-((1+i)^(n)-1)/i

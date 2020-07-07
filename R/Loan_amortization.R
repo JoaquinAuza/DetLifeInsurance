@@ -22,7 +22,9 @@
 #'
 
 Loan_amortization<-function(V0,n,i,i2=0,alic=0,ins=0,method){
-  options(digitis = 15)
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
+  options(digits = 15)
   if(V0>0 && n>0 && is_integer(n)==1 && i>=0  && i2>=0 && alic>=0 && ins>=0){
     if(method=="constant_installment"){
       c<-V0/af(1,n,i)

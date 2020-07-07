@@ -18,6 +18,8 @@
 
 
 Table_Makeham<-function(x0,omega,A,B,C){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   if(x0>=0 && omega>=0 && A>(-B) && 0<B  && C>1 && is_integer(x0)==1 && is_integer(omega)==1){
     S<-exp(-A)

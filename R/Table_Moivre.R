@@ -12,6 +12,8 @@
 #'
 
 Table_Moivre<-function(x0,omega){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   if(x0>=0 && omega>=0 && is_integer(x0)==1 && is_integer(omega)==1){
     if(x0>=omega){

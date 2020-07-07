@@ -4,9 +4,7 @@
 #' @param x  A numeric type value or a vector.
 #' @keywords Integer
 #' @return NULL
-#' @examples
-#' DetLifeInsurance:::is_integer(3)
-#' DetLifeInsurance:::is_integer(1:7)
+#' @noRd
 #'
 
 

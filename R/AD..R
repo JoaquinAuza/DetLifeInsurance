@@ -24,6 +24,8 @@
 #' AD.(20,10,15,3,0.04,CSO80MANB,1,"UDD","intra",1)
 #'
 AD.<-function(x,h,n,k=1,i=0.04,data,prop=1,assumption="none",variation="none",cap=1){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   if(x>=0 && is_integer(x)==1 && h>=0 && is_integer(h)==1 && n>=0 && is_integer(n)==1 && k>=1 && is_integer(k)==1 && i>=0 && prop>0 && cap>0){
     if(n==0){

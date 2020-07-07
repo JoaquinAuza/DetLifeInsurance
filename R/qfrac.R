@@ -10,12 +10,15 @@
 #' @param assumption A character string. The assumption used for fractional ages ("UDD" for uniform distribution of deaths and "constant" for constant force of mortality).
 #' @keywords Fractional probability of death
 #' @return The fractional probability of death.
+#' @export
 #' @examples
-#' DetLifeInsurance:::qfrac(27,1,4,0.04,CSO80MANB,"constant",1)
-#' DetLifeInsurance:::qfrac(20,0,12,0.04,CSO80MANB,"UDD",1)
+#' qfrac(27,1,4,0.04,CSO80MANB,"constant",1)
+#' qfrac(20,0,12,0.04,CSO80MANB,"UDD",1)
 
 
 qfrac<-function(x,s,k,i,data,assumption,prop){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   if(assumption=="UDD"){
     Q<-((1/k)*data[x+1,2]*prop)/(1-(s/k)*data[x+1,2]*prop)

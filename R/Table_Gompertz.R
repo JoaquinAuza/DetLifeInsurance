@@ -14,6 +14,8 @@
 #'
 
 Table_Gompertz<-function(x0,omega,B,C){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   if(x0>=0 && omega>=0 && 0<B  && C>1 && is_integer(x0)==1 && is_integer(omega)==1) {
     G<-exp(-B/(log(C)))

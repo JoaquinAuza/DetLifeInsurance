@@ -18,6 +18,8 @@
 #'
 
 Rate_converter<-function(num,rate1,m,rate2,k,type="days"){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   rate<-0
   if(type=="days"){

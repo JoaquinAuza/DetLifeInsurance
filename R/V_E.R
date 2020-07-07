@@ -24,6 +24,8 @@
 
 
 V_E<-function(px,x,n,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumption="none",cap,t){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   reserve<-c()
   res<-0

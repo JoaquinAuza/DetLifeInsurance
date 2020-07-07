@@ -5,8 +5,7 @@
 #' @param var A numeric type value. Number of payments per year.
 #' @keywords Contmeses
 #' @return Returns 1 if in that moment corresponds a payment or 0 if not.
-#' @examples
-#' DetLifeInsurance:::contmeses(13,2)
+#' @noRd
 #'
 
 contmeses<-function(x,var){
@@ -20,3 +19,4 @@ contmeses<-function(x,var){
   }
   return(div)
 }
+

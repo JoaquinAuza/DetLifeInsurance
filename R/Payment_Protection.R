@@ -32,7 +32,9 @@
 
 
 Payment_Protection<-function(x,n,k=1,V0,i=0.04,ip=0.04,data,prop=1,type="outstanding_debt",method="interest_only"){
-  options(digitis = 15)
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
+  options(digits = 15)
   if(x>=0 && is_integer(x)==1 && n>=0 && is_integer(n)==1 && k>=1 && is_integer(k)==1 && V0>0 && i>=0 && ip>=0 && prop>0){
     ipk<-Rate_converter(ip,"i",1,"i",k,"frac")
     if(type=="outstanding_debt"){

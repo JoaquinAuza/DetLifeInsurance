@@ -12,7 +12,7 @@ PremQuart<-Annualized_Prem/4
 
 
 ## -----------------------------------------------------------------------------
-Prem<-av(x=45,h=7,n=13,r=0.05, i=0.045, data = CSO80FALB, cap=12000) #Actuarial present value of a varying life annuity according to a arithmetic progression
+Prem<-av(x=45,h=7,n=13,r=0.05, i=0.045, data = CSO80FALB, cap=12000) #Actuarial present value of a varying life annuity that follows an arithmetic progression
 AnnualPrem<-PremiumFrac(px1 = Prem, x=45, m=7, k=1, i=0.045,data= CSO80FALB) #Annual premium to be paid at the beginning of each year of the deferral term. 
 V_av(px= AnnualPrem, x=45, h=7, n=13, r=0.05, cantprem = 7, premperyear = 1, i=0.045, data= CSO80FALB, cap=12000, t=20) #Reserve of the coverage up to the year 20
 
@@ -38,7 +38,7 @@ Table_Gompertz(x0=0, omega=100, B=0.00008, C= 1.07)
 
 ## -----------------------------------------------------------------------------
 MortTable<-Table_Moivre(0,100)
-Px<- A.(x=35,h=0,n=20,i=0.03,data= MortTable, cap=10000)+E(x=35,n=20, i=0.03, data=MortTable, cap=10000) #A Dotal coverage
+Px<- A.(x=35,h=0,n=20,i=0.03,data= MortTable, cap=10000) + E(x=35,n=20, i=0.03, data=MortTable, cap=10000) #A Dotal (endowment) coverage
 AnnualPrem<-PremiumFrac(px1 = Px, x=35, m=10, k=6, data= MortTable, effect = "yes", assumption = "UDD") #The annualized value of the premium
 AnnualPrem/6 #The premium to be paid every two months
 

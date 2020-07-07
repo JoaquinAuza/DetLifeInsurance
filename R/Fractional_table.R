@@ -14,6 +14,8 @@
 #' Fractional_table(CSO80MANB,2,0.04,"UDD")
 #'
 Fractional_table <-function(data,frac,i=0.04,assumption="UDD"){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   X<-c()
   Q<-c()

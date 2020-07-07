@@ -31,6 +31,8 @@
 
 
 V_avg<-function(px,x,h,n,k=1,r,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumption="none",variation="none",cap,t){
+  dig<-getOption("digits")
+  on.exit(options(digits = dig))
   options(digits = 15)
   reserve<-c()
   res<-0
