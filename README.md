@@ -10,9 +10,15 @@ In addition, 47 commonly used mortality tables are included as data.
 
 ## Installation
 
+To install from [CRAN](https://CRAN.R-project.org), use:
+
+```r
+install.packages("DetLifeInsurance")
+```
+
 To install from GitHub, use:
 
-```bash
+```r
 #library(devtools)
 devtools::install_github("JoaquinAuza/DetLifeInsurance")
 ```
@@ -23,7 +29,7 @@ devtools::install_github("JoaquinAuza/DetLifeInsurance")
 In this example, we obtain the annual net premium of a life insurance coverage of $100000 for a term of 5 years, issued
 to a male of age 30, using an interest rate of 3.5%.
 
-```{r example1}
+```r
 #library(DetLifeInsurance)
 
 LI <- A.(x=30, h=0, n=5, i = 0.035, data=CSO80MANB, cap = 100000) #Actuarial PV of the LI
@@ -37,7 +43,7 @@ Net_Premium <-PremiumFrac(px1=LI, x=30,m=5,i=0.035,k=1,data=CSO80MANB)
 ## Example #2
 In this example, we obtain the value of the actuarial reserve for a life insurance coverage where the insuree pays monthly premiums during the first year. UDD assumption is used. 
 
-```{r example2}
+```r
 #library(DetLifeInsurance)
 
 LI <- A.(x=30, h=0, n=5, i = 0.035, data=CSO80MANB, cap = 100000) 
@@ -56,7 +62,7 @@ Work in progress!
 - [x] Basic functionality.
 - [x] Enhanced documentation.
 - [x] Fix references, fix non-exporable functions.  
-- [ ] Upload to CRAN.
+- [x] Upload to CRAN.
 - [ ] Better error handling.
 - [ ] New functions: group insurance, loan insurance reserves, stochastic valuation?...
 
