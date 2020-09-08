@@ -10,6 +10,7 @@
 #' @return NULL
 #' @examples
 #' Survival(20,2,CSO58MANB,1)
+#' Survival(31,33,CSO80MANB,0.8)
 #'
 
 
@@ -23,7 +24,13 @@ Survival<-function(x,n,data,prop=1){
       Prob<-1
     }else{
       for(l in x:(x+n-1)){
+        if(l==(nrow(data)-1)){
+          prop<-1
+        }
         Prob<-Prob*(1-data[l+1,2]*prop)
+        if(is.na(Prob)==1){
+          Prob<-0
+        }
       }
       Prob<-as.numeric(Prob)
     }
@@ -32,5 +39,4 @@ Survival<-function(x,n,data,prop=1){
     stop("Check values")
   }
 }
-
 

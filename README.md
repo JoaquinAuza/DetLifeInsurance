@@ -63,7 +63,7 @@ Work in progress!
 - [x] Enhanced documentation.
 - [x] Fix references, fix non-exporable functions.  
 - [x] Upload to CRAN.
-- [ ] Better error handling.
-- [ ] New functions: group insurance, loan insurance reserves, stochastic valuation?...
+- [x] New functions: group insurance, loan insurance reserves...
+- [ ] what else?
 
 

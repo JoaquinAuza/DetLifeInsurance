@@ -13,7 +13,7 @@
 #' @export
 #' @examples
 #' qfrac(27,1,4,0.04,CSO80MANB,"constant",1)
-#' qfrac(20,0,12,0.04,CSO80MANB,"UDD",1)
+#' qfrac(20,0,12,0.04,CSO80MANB,"UDD",0.8)
 
 
 qfrac<-function(x,s,k,i,data,assumption,prop){
@@ -21,8 +21,14 @@ qfrac<-function(x,s,k,i,data,assumption,prop){
   on.exit(options(digits = dig))
   options(digits = 15)
   if(assumption=="UDD"){
+    if(x==(nrow(data)-1)){
+      prop<-1
+    }
     Q<-((1/k)*data[x+1,2]*prop)/(1-(s/k)*data[x+1,2]*prop)
   }else if(assumption=="constant"){
+    if(x==(nrow(data)-1)){
+      prop<-1
+    }
     ik<-Rate_converter(i,"i",1,"i",k,"frac")
     p<-((1+i)^(s/k))*(1-(s/k)*(1-E(x,1,i,data,prop,"none",1)))
     q.<-((1+i)^(s/k))*((1/k)*(1-E(x,1,i,data,prop,"none",1))*((s+1)*ik+1)-ik)

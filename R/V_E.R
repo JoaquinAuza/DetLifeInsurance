@@ -45,14 +45,14 @@ V_E<-function(px,x,n,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumption="non
           res<-(res+prem-risk)*(E(x+j-1,1,i,data,prop,"none",1))^(-1)
           e<-(E(x+j-1,1,i,data,prop,"none",1))^(-1)
           reserve<-rbind(reserve,c(prem,risk,e,round(res,4)))
-          rown<-c(rown,paste("Period",j))
+          rown<-c(rown,paste("Year",j))
         }
         rownames(reserve)<-rown
         colnames(reserve)<-c("Premium","Risk","1/E","Reserve")
       } else{
-        stop("Check Period")
+        stop("Check Year")
       }
-    } else if(premperyear>1) {
+    } else if(premperyear>=1) {
       if(t<=n*12){
         Premiums_Paid<-0
         frac<-1

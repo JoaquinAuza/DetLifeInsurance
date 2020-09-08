@@ -29,7 +29,7 @@ Calculates the fractional probability for a person of x+s/k dies before age x+(s
 }
 \examples{
 qfrac(27,1,4,0.04,CSO80MANB,"constant",1)
-qfrac(20,0,12,0.04,CSO80MANB,"UDD",1)
+qfrac(20,0,12,0.04,CSO80MANB,"UDD",0.8)
 }
 \keyword{Fractional}
 \keyword{death}

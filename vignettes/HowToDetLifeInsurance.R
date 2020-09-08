@@ -3,11 +3,11 @@ library(DetLifeInsurance)
 
 ## -----------------------------------------------------------------------------
 Px1 <- Av.(x=25, h=5, n=10,r= 1,i = 0.035, data=CSO80MANB, cap = 150000) #Actuarial Present Value of the increasing life insurance.
-Net_Prem <- PremiumFrac(Px1,x=25,m=5, k=1, i=0.035, data=CSO80MANB) #Net premium to be paid at the begining of   each year of the defferal term.
+Net_Prem <- PremiumFrac(Px1,x=25,m=5, k=1, i=0.035, data=CSO80MANB) #Net premium to be paid at the begining of each year of the defferal term.
 
 ## -----------------------------------------------------------------------------
 Prem<- a(x=45,h=0, n=20,k=2,i=0.06, data=CSO80FALB, cap=12000, assumption = "constant") #Actuarial Present Value of the life annuity, paid twice a year.
-Annualized_Prem<- PremiumFrac(Prem,x=45,m=10,k=4,data=CSO80FALB, i=0.06, assumption = "constant") #Annualized    value of the premium to be paid four times a year for 10 years.
+Annualized_Prem<- PremiumFrac(Prem,x=45,m=10,k=4,data=CSO80FALB, i=0.06, assumption = "constant") #Annualized  value of the premium to be paid four times a year for 10 years.
 PremQuart<-Annualized_Prem/4
 
 
@@ -31,6 +31,11 @@ V_A.(px = AnnualizedPrem/4, x=40, h=0, n=15, cantprem = 60, premperyear = 4, dat
 Prem<- aD(x=20, h=5, n=5, k=2, i=0.055, data= CSO80MANB, assumption = "constant", variation = "intra", cap=12000) #Actuarial present value of a decreasing life annuity
 Annualized_Prem<- PremiumFrac(px1 = Prem, x=20, m=5, k=12, assumption = "constant", data=CSO80MANB, i=0.055) #Annualized value of the premium to be paid monthly
 V_aD(px= Annualized_Prem/12 ,x=20,h=5,n=5, k=2, premperyear = 12, cantprem = 60, i=0.055, data= CSO80MANB, assumption = "constant", variation = "intra", cap=12000, t=120) #Reserve up to the month 120
+
+## -----------------------------------------------------------------------------
+ages<-c(20,34,36,50)
+Px<-Am.(x=ages,h=5,n=30,i=0.06,data=CSO80MANB,ndeath=2,cap=200000) #Actuarial present value of a life insurnace for a group to be paid when the second death occur.
+Px/am(x=ages,h=0,n=5,i=0.06,data=CSO80MANB,type="atleast",quant=3) #Annual premium to be paid when at least 3 of the group are still alive
 
 ## -----------------------------------------------------------------------------
 Table_Gompertz(x0=0, omega=100, B=0.00008, C= 1.07)
@@ -58,11 +63,17 @@ Loan_amortization(V0=300000,n=10,i=0.03,ins=0.01,method = "constant_principal")
 
 
 ## -----------------------------------------------------------------------------
-Payment_Protection(x=35,n=15,V0=1050000,i=0.05,ip=0.055,data=CSO58MALB,type="outstanding_debt",method="constant_principal") #Actuarial present value of the coverage
+Px1<-Payment_Protection(x=35,n=15,V0=1050000,i=0.05,ip=0.055,data=CSO58MALB,type="outstanding_debt",method="constant_principal") #Actuarial present value of the coverage
+Annual_Px1 <- PremiumFrac(px1=Px1,x=35,m=5, k = 1,i=0.05,data=CSO58MALB) #Annual Premium to be paid
+V_Payment_Protection(px=Annual_Px1,x=35,n=15,k=1,cantprem=5,premperyear=1,i=0.05,ip=0.055,data =CSO58MALB, type="outstanding_debt",method="constant_principal",V0=1050000,t=15) #Reserve uo to the year 15
+
 
 
 ## -----------------------------------------------------------------------------
-Payment_Protection(x=30,n=10,k=2,V0=1000000,i=0.035,ip=0.06,data=CSO80FANB,type="payments",method="constant_instalment") #actuarial present value of the coverage
+Px1 <- Payment_Protection(x=30,n=10,k=2,V0=1000000,i=0.035,ip=0.06,data=CSO80FANB,type="payments",method="constant_instalment") #Actuarial present value of the coverage
+Annual_Px1 <- PremiumFrac(px1=Px1,x=30,m=3, k = 6,i=0.035,data=CSO80FANB, assumption = "UDD") #Annualized value of the premium to be paid every two months
+V_Payment_Protection(px=Annual_Px1/6,x=30,n=10,k=2,cantprem=18,premperyear=6,i=0.035,ip=0.06,data =CSO80FANB, type="payments",method="constant_instalment",V0=1000000,t=120) #Reserve up to the month 120
+
 
 ## -----------------------------------------------------------------------------
 i<-Rate_converter(0.4,"j",60,"i",365, "days") #Convert the annual nominal rate of 2 periods to a effective annual interest rate

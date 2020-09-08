@@ -40,9 +40,12 @@ E<-function(x,n,i=0.04,data,prop=1,assumption="none",cap=1){
         }
       }else{
         if(assumption=="UDD"){
+          if((x+n)==(nrow(data)-1)){
+            prop<-1
+          }
           t<-floor(n)
           sk<-n-t
-          prob<-1-sk*data[x+n+1,2]
+          prob<-1-sk*data[x+n+1,2]*prop
           Exn<-(1/(1+i))^(n)*(Survival(x,t,data,prop)*prob)
           if(is.na(Exn)==1){
             Exn<-0

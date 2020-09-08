@@ -33,8 +33,14 @@ A.<-function(x,h,n,k=1,i=0.04,data,prop=1,assumption="none",cap=1){
       Axhn<-0
       p<-Survival(x,h,data,prop)
       for(s in h:(h+n-1)){
+        if(x+s==(nrow(data)-1)){
+          prop<-1
+        }
         Axhn<-Axhn+(1/(1+i))^(s+1)*(as.numeric(data[x+s+1,2])*prop)*p
         p<-p*(1-data[x+s+1,2]*prop)
+        if(x+s==(nrow(data)-1)){
+          break
+        }
       }
     } else{
       if(assumption=="constant"){
@@ -54,7 +60,5 @@ A.<-function(x,h,n,k=1,i=0.04,data,prop=1,assumption="none",cap=1){
     stop("Check values")
   }
 }
-
-
 
 

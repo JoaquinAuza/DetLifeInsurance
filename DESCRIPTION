@@ -1,7 +1,7 @@
 Package: DetLifeInsurance
 Type: Package
 Title: Life Insurance Premium and Reserves Valuation 
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(
     person("Joaquin", "Auza", email = "auzajoaquin@gmail.com", role = c("aut", "cre")),
     person("Maria Sol", "Alvarez", email = "alvarezmmsol@gmail.com", role = "aut"))

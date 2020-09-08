@@ -35,7 +35,7 @@ Payment_Protection<-function(x,n,k=1,V0,i=0.04,ip=0.04,data,prop=1,type="outstan
   dig<-getOption("digits")
   on.exit(options(digits = dig))
   options(digits = 15)
-  if(x>=0 && is_integer(x)==1 && n>=0 && is_integer(n)==1 && k>=1 && is_integer(k)==1 && V0>0 && i>=0 && ip>=0 && prop>0){
+  if(x>=0 && is_integer(x)==1 && n>=0 && is_integer(n)==1 && k>=1 && is_integer(k)==1 && V0>0 && i>=0 && ip>=0 && prop>0 && x+n<=(nrow(data)-1) && x+n<=nrow(data)-1){
     ipk<-Rate_converter(ip,"i",1,"i",k,"frac")
     if(type=="outstanding_debt"){
       if(method=="constant_instalment"){
@@ -45,7 +45,10 @@ Payment_Protection<-function(x,n,k=1,V0,i=0.04,ip=0.04,data,prop=1,type="outstan
         p<-1
         for(s in 0:(n-1)){
           for(z in 0:(k-1)){
-            sd<-sd+(as.numeric(data[x+s+1,2]))*p*(1/k)*v^(s+(z+1)/k)*c*af(0,n*k-s*k-z,ipk)
+            if(x+s==(nrow(data)-1)){
+              prop<-1
+            }
+            sd<-sd+(as.numeric(data[x+s+1,2]))*prop*p*(1/k)*v^(s+(z+1)/k)*c*af(0,n*k-s*k-z,ipk)
           }
           p<-p*(1-data[x+s+1,2]*prop)
         }
@@ -59,7 +62,10 @@ Payment_Protection<-function(x,n,k=1,V0,i=0.04,ip=0.04,data,prop=1,type="outstan
         p<-1
         for(s in 0:(n-1)){
           for(z in 0:(k-1)){
-            sd<-sd+(as.numeric(data[x+s+1,2]))*p*(1/k)*v^(s+(z+1)/k)*(V0*(1+ipk)*((n*k-s*k-z)/(n*k)))
+            if(x+s==(nrow(data)-1)){
+              prop<-1
+            }
+            sd<-sd+(as.numeric(data[x+s+1,2])*prop)*p*(1/k)*v^(s+(z+1)/k)*(V0*(1+ipk)*((n*k-s*k-z)/(n*k)))
           }
           p<-p*(1-data[x+s+1,2]*prop)
         }
@@ -75,6 +81,9 @@ Payment_Protection<-function(x,n,k=1,V0,i=0.04,ip=0.04,data,prop=1,type="outstan
         q<-0
         p<-1
         for(s in 0:(n-1)){
+          if(x+s==(nrow(data)-1)){
+            prop<-1
+          }
           q<-q+as.numeric(data[x+s+1,2]*prop)*p
           p<-p*(1-data[x+s+1,2]*prop)
         }
@@ -86,6 +95,9 @@ Payment_Protection<-function(x,n,k=1,V0,i=0.04,ip=0.04,data,prop=1,type="outstan
         q<-0
         p<-1
         for(s in 0:(n-1)){
+          if(x+s==(nrow(data)-1)){
+            prop<-1
+          }
           q<-q+as.numeric(data[x+s+1,2]*prop)*p
           p<-p*(1-data[x+s+1,2]*prop)
         }
@@ -104,7 +116,10 @@ Payment_Protection<-function(x,n,k=1,V0,i=0.04,ip=0.04,data,prop=1,type="outstan
             for(j in 0:(upperlimit-1)){
               presval<-presval+((V0/(n*k))+((n*k-k*s-z-j)/(n*k))*V0*ipk)*vk^(j)
             }
-            sc<-sc+(as.numeric(data[x+s+1,2]))*p*(1/k)*v^(s+(z+1)/k)*presval
+            if(x+s==(nrow(data)-1)){
+              prop<-1
+            }
+            sc<-sc+(as.numeric(data[x+s+1,2])*prop)*p*(1/k)*v^(s+(z+1)/k)*presval
           }
           p<-p*(1-data[x+s+1,2]*prop)
         }
@@ -119,3 +134,4 @@ Payment_Protection<-function(x,n,k=1,V0,i=0.04,ip=0.04,data,prop=1,type="outstan
     stop("Check values")
   }
 }
+

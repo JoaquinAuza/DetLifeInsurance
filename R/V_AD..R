@@ -49,12 +49,12 @@ V_AD.<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumpt
           res<-(res+prem-risk)*(E(x+j-1,1,i,data,prop,"none",1))^(-1)
           e<-(E(x+j-1,1,i,data,prop,"none",1))^(-1)
           reserve<-rbind(reserve,c(prem,risk,e,round(res,3)))
-          rown<-c(rown,paste("Month",j))
+          rown<-c(rown,paste("Year",j))
         }
-        colnames(reserve)<-c("Premium","Risk","E","Reserve")
+        colnames(reserve)<-c("Premium","Risk","1/E","Reserve")
         rownames(reserve)<-rown
       } else{
-        stop("Check Period")
+        stop("Check Year")
       }
     }else if(k<=12){
       if(t<=(n+h)*12){
@@ -90,7 +90,7 @@ V_AD.<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumpt
             res<-va*(E(x+age,frac/12,i,data,prop,assumption,1))^(-1)
             e<-E(x+age,(frac-1)/12,i,data,prop,assumption,1)*(E(x+age,frac/12,i,data,prop,assumption,1))^(-1)
             reserve<-rbind(reserve,c(prem,risk,e,round(res,3)))
-            rown<-c(rown,paste("Month",s))
+            rown<-c(rown,paste("Year",s))
             frac<-frac+1
             if(round(s/12)==s/12){
               frac<-1
@@ -100,7 +100,7 @@ V_AD.<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumpt
               Elapsed_t_Payment<-0
             }
           }
-          colnames(reserve)<-c("Premium","Risk","E","Reserve")
+          colnames(reserve)<-c("Premium","Risk","1/E","Reserve")
           rownames(reserve)<-rown
         }else if(variation=="intra"){
           for(s in 1:t){
@@ -133,7 +133,7 @@ V_AD.<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumpt
               Elapsed_t_Payment<-0
             }
           }
-          colnames(reserve)<-c("Premium","Risk","E","Reserve")
+          colnames(reserve)<-c("Premium","Risk","1/E","Reserve")
           rownames(reserve)<-rown
         } else{
           stop("Check variation")

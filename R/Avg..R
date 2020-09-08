@@ -39,8 +39,14 @@ Avg.<-function(x,h,n,k=1,r,i=0.04,data,prop=1,assumption="none",variation="none"
       p<-Survival(x,h,data,prop)
       v<-1/(1+i)
       for(s in h:(h+n-1)){
+        if(s==(nrow(data)-1)){
+          prop<-1
+        }
         Avgxhn<-Avgxhn+v^(s+1)*(as.numeric(data[x+s+1,2])*prop)*p*(1+r)^(s-h)
         p<-p*(1-data[x+s+1,2]*prop)
+        if(x+s==nrow(data)-1){
+          break
+        }
       }
     } else {
       if(assumption=="constant"){
@@ -50,8 +56,11 @@ Avg.<-function(x,h,n,k=1,r,i=0.04,data,prop=1,assumption="none",variation="none"
           ik<-Rate_converter(i,"i",1,"i",k,"frac")
           for(t in h:(h+n-1)){
             for(s in 0:(k-1)){
-              q<-((1+i)^(s/k))*((1/k)*(1-E(x+t,1,i,data,1,"none",1))*((s+1)*ik+1)-ik)
+              q<-((1+i)^(s/k))*((1/k)*(1-E(x+t,1,i,data,prop,"none",1))*((s+1)*ik+1)-ik)
               Avgxhn<-Avgxhn+(1+r)^(t-h)*E(x,t,i,data,prop,"none",1)*q*v^((s+1)/k)
+            }
+            if(x+t==nrow(data)-1){
+              break
             }
           }
         } else if(variation=="intra"){
@@ -60,8 +69,11 @@ Avg.<-function(x,h,n,k=1,r,i=0.04,data,prop=1,assumption="none",variation="none"
           ik<-Rate_converter(i,"i",1,"i",k,"frac")
           for(t in h:(h+n-1)){
             for(s in 0:(k-1)){
-              q<-((1+i)^(s/k))*((1/k)*(1-E(x+t,1,i,data,1,"none",1))*((s+1)*ik+1)-ik)
+              q<-((1+i)^(s/k))*((1/k)*(1-E(x+t,1,i,data,prop,"none",1))*((s+1)*ik+1)-ik)
               Avgxhn<-Avgxhn+(1+r)^((t-h)*k+s)*E(x,t,i,data,prop,"none",1)*q*v^((s+1)/k)
+            }
+            if(x+t==nrow(data)-1){
+              break
             }
           }
         }else{
@@ -73,8 +85,14 @@ Avg.<-function(x,h,n,k=1,r,i=0.04,data,prop=1,assumption="none",variation="none"
           v<-1/(1+i)
           for(t in h:(h+n-1)){
             for(s in 0:(k-1)){
-              q<-(1/k)*data[x+t+1,2]
+              if(x+t==(nrow(data)-1)){
+                prop<-1
+              }
+              q<-(1/k)*data[x+t+1,2]*prop
               Avgxhn<-Avgxhn+(1+r)^(t-h)*E(x,t,i,data,prop,"none",1)*q*v^((s+1)/k)
+            }
+            if(x+t==nrow(data)-1){
+              break
             }
           }
         }else if(variation=="intra"){
@@ -82,8 +100,14 @@ Avg.<-function(x,h,n,k=1,r,i=0.04,data,prop=1,assumption="none",variation="none"
           v<-1/(1+i)
           for(t in h:(h+n-1)){
             for(s in 0:(k-1)){
-              q<-((1/k)*data[x+t+1,2])
+              if(x+t==(nrow(data)-1)){
+                prop<-1
+              }
+              q<-((1/k)*data[x+t+1,2])*prop
               Avgxhn<-Avgxhn+(1+r)^((t-h)*k+s)*E(x,t,i,data,prop,"none",1)*q*v^((s+1)/k)
+            }
+            if(x+t==nrow(data)-1){
+              break
             }
           }
         } else{

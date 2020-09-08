@@ -12,32 +12,17 @@
 
 <meta name="author" content="Joaquin Auza &amp; Maria Sol Alvarez" />
 
+<meta name="date" content="2020-07-09" />
 
 <title>HowToDetLifeInsurance</title>
 
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
-</script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -47,16 +32,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -65,9 +48,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -318,13 +301,14 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">HowToDetLifeInsurance</h1>
 <h4 class="author">Joaquin Auza &amp; Maria Sol Alvarez</h4>
-<h4 class="date">21/6/2020</h4>
+<h4 class="date">07/09/2020</h4>
 
 
 
 <p>DetLifeInsurance is an R package designed to provide tools for:</p>
 <ul>
 <li>Deterministic valuation of actuarial reserves and life insurance and annuities premiums (both constant and variable amounts supported).</li>
+<li>Deterministic valuation of actuarial life insurance and annuities premiums for a group of insurees (constant amounts).</li>
 <li>Applying fractional age assumptions to life tables, and generating new ones based on mortality laws.</li>
 <li>Calculation of equivalent interest-discount rates as well as future and present value of annuities.</li>
 <li>Calculation of loan amortization schedule.</li>
@@ -335,10 +319,16 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Life insurance and annuities premiums</h2>
 <p>For calculating the actuarial present value:</p>
 <ul>
-<li><p>Pure Endowment: <code>E(x, n, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code></p></li>
+<li>Pure Endowment: <code>E(x, n, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code> For a insuree</li>
+</ul>
+<p><code>Em(x, n, i=0.04, data, prop = 1, assimption = &quot;none&quot;, type = &quot;joint&quot;, quant = 1, cap = 1)</code> For a group of insurees.</p>
+<ul>
 <li><p>Life Insurance:</p>
 <ul>
-<li>Life insurance: <code>A.(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code></li>
+<li>Life insurance: <code>A.(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code> For a insuree</li>
+</ul>
+<p><code>Am.(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code></p>
+<ul>
 <li>Varying life insurance according to a arithmetic progression: <code>Av.(x, h, n, k = 1, r = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code><br />
 <em>For an increasing life insurance coverage, ‘r’ must be 1.</em></li>
 <li>Varying life insurance according to a geometric progression.: <code>Avg.(x, h, n, k = 1, r = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></li>
@@ -347,7 +337,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </ul></li>
 <li><p>Life Annuity:</p>
 <ul>
-<li>Life annuity: <code>a(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code></li>
+<li>Life annuity: <code>a(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code> For a insuree</li>
+</ul>
+<p><code>am(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, cap = 1)</code> For a group of insurees</p>
+<ul>
 <li>Varying life annuity according to a arithmetic progression: <code>av(x,h,n,k = 1,r = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code> <em>For an increasing life annuity coverage, ‘r’ must be 1.</em></li>
 <li>Varying life annuity according to a geometric progression: <code>avg(x,h,n,k = 1,r = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></li>
 <li>Decreasing life annuity: <code>aD(x, h,  n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></li>
@@ -358,11 +351,11 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>For calculating an annualized premium: <code>PremiumFrac(px1, x, m, k, i = 0.04, data, prop = 1, effect = &quot;yes&quot;, assumption)</code></p>
 <div id="examples" class="section level4">
 <h4>Examples</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>Px1 &lt;-<span class="st"> </span><span class="kw">Av.</span>(<span class="dt">x=</span><span class="dv">25</span>, <span class="dt">h=</span><span class="dv">5</span>, <span class="dt">n=</span><span class="dv">10</span>,<span class="dt">r=</span> <span class="dv">1</span>,<span class="dt">i =</span> <span class="fl">0.035</span>, <span class="dt">data=</span>CSO80MANB, <span class="dt">cap =</span> <span class="dv">150000</span>) <span class="co">#Actuarial Present Value of the increasing life insurance.</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>Net_Prem &lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(Px1,<span class="dt">x=</span><span class="dv">25</span>,<span class="dt">m=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.035</span>, <span class="dt">data=</span>CSO80MANB) <span class="co">#Net premium to be paid at the begining of   each year of the defferal term.</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>Prem&lt;-<span class="st"> </span><span class="kw">a</span>(<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">20</span>,<span class="dt">k=</span><span class="dv">2</span>,<span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">data=</span>CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>) <span class="co">#Actuarial Present Value of the life annuity, paid twice a year.</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>Annualized_Prem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(Prem,<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">m=</span><span class="dv">10</span>,<span class="dt">k=</span><span class="dv">4</span>,<span class="dt">data=</span>CSO80FALB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>) <span class="co">#Annualized    value of the premium to be paid four times a year for 10 years.</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>PremQuart&lt;-Annualized_Prem<span class="op">/</span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">Px1 &lt;-<span class="st"> </span><span class="kw">Av.</span>(<span class="dt">x=</span><span class="dv">25</span>, <span class="dt">h=</span><span class="dv">5</span>, <span class="dt">n=</span><span class="dv">10</span>,<span class="dt">r=</span> <span class="dv">1</span>,<span class="dt">i =</span> <span class="fl">0.035</span>, <span class="dt">data=</span>CSO80MANB, <span class="dt">cap =</span> <span class="dv">150000</span>) <span class="co">#Actuarial Present Value of the increasing life insurance.</span></a>
+<a class="sourceLine" id="cb1-2" title="2">Net_Prem &lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(Px1,<span class="dt">x=</span><span class="dv">25</span>,<span class="dt">m=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.035</span>, <span class="dt">data=</span>CSO80MANB) <span class="co">#Net premium to be paid at the begining of each year of the defferal term.</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">Prem&lt;-<span class="st"> </span><span class="kw">a</span>(<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">20</span>,<span class="dt">k=</span><span class="dv">2</span>,<span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">data=</span>CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>) <span class="co">#Actuarial Present Value of the life annuity, paid twice a year.</span></a>
+<a class="sourceLine" id="cb2-2" title="2">Annualized_Prem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(Prem,<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">m=</span><span class="dv">10</span>,<span class="dt">k=</span><span class="dv">4</span>,<span class="dt">data=</span>CSO80FALB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>) <span class="co">#Annualized  value of the premium to be paid four times a year for 10 years.</span></a>
+<a class="sourceLine" id="cb2-3" title="3">PremQuart&lt;-Annualized_Prem<span class="op">/</span><span class="dv">4</span></a></code></pre></div>
 </div>
 </div>
 <div id="actuarial-reserves" class="section level2">
@@ -381,34 +374,34 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <li><p>Decreasing life annuity: <code>V_aD(x, h, n, k = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation = &quot;none&quot;, cap = 1)</code></p></li>
 <li><p>Decreasing life insurance: <code>V_AD.(px, x, h, n, k = 1, cantprem = 1, premperyear = 1, i = 0.04, data, prop = 1, assumption = &quot;none&quot;, variation =&quot;none&quot;, cap, t)</code></p></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>Prem&lt;-<span class="kw">av</span>(<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">h=</span><span class="dv">7</span>,<span class="dt">n=</span><span class="dv">13</span>,<span class="dt">r=</span><span class="fl">0.05</span>, <span class="dt">i=</span><span class="fl">0.045</span>, <span class="dt">data =</span> CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>) <span class="co">#Actuarial present value of a varying life annuity that follows an arithmetic progression</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>AnnualPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">45</span>, <span class="dt">m=</span><span class="dv">7</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.045</span>,<span class="dt">data=</span> CSO80FALB) <span class="co">#Annual premium to be paid at the beginning of each year of the deferral term. </span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">V_av</span>(<span class="dt">px=</span> AnnualPrem, <span class="dt">x=</span><span class="dv">45</span>, <span class="dt">h=</span><span class="dv">7</span>, <span class="dt">n=</span><span class="dv">13</span>, <span class="dt">r=</span><span class="fl">0.05</span>, <span class="dt">cantprem =</span> <span class="dv">7</span>, <span class="dt">premperyear =</span> <span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.045</span>, <span class="dt">data=</span> CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">t=</span><span class="dv">20</span>) <span class="co">#Reserve of the coverage up to the year 20</span></span></code></pre></div>
-<pre><code>##            Premium  Risk        E   Reserve
-## Period 1  17228.44     0 1.048860  18070.22
-## Period 2  17228.44     0 1.049113  37032.26
-## Period 3  17228.44     0 1.049397  56941.01
-## Period 4  17228.44     0 1.049703  77855.87
-## Period 5  17228.44     0 1.050030  99841.34
-## Period 6  17228.44     0 1.050388 122968.75
-## Period 7  17228.44     0 1.050779 147316.30
-## Period 8      0.00 12000 1.051223 142247.64
-## Period 9      0.00 12600 1.051710 136351.71
-## Period 10     0.00 13200 1.052208 129581.17
-## Period 11     0.00 13800 1.052716 121884.73
-## Period 12     0.00 14400 1.053215 113204.54
-## Period 13     0.00 15000 1.053693 103477.43
-## Period 14     0.00 15600 1.054171  92637.87
-## Period 15     0.00 16200 1.054703  80619.27
-## Period 16     0.00 16800 1.055342  67351.18
-## Period 17     0.00 17400 1.056132  52755.02
-## Period 18     0.00 18000 1.057147  36741.15
-## Period 19     0.00 18600 1.058367  19200.00
-## Period 20     0.00 19200 1.059752      0.00</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>Prem&lt;-<span class="st"> </span><span class="kw">Avg.</span>(<span class="dt">x=</span><span class="dv">24</span>, <span class="dt">h=</span><span class="dv">10</span>,<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">r=</span><span class="fl">0.06</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">cap=</span> <span class="dv">100000</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;inter&quot;</span>) <span class="co">#Actuarial present value of a varying life insurance according to a geometric progression</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>AnnualPrem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">24</span>, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">i=</span><span class="fl">0.03</span>) <span class="co">#Annual premium to be paid at the beginning of each year of the deferral term </span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">V_Avg.</span>(<span class="dt">px =</span>AnnualPrem, <span class="dt">x=</span><span class="dv">24</span>, <span class="dt">h=</span><span class="dv">10</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">r=</span><span class="fl">0.06</span>, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">cantprem =</span> <span class="dv">10</span>, <span class="dt">premperyear =</span> <span class="dv">1</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;inter&quot;</span>, <span class="dt">cap=</span><span class="dv">100000</span>, <span class="dt">t=</span><span class="dv">240</span>) <span class="co">#Reserve of the coverage up to the month 240</span></span></code></pre></div>
-<pre><code>##            Premium     Risk        E  Reserve
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">Prem&lt;-<span class="kw">av</span>(<span class="dt">x=</span><span class="dv">45</span>,<span class="dt">h=</span><span class="dv">7</span>,<span class="dt">n=</span><span class="dv">13</span>,<span class="dt">r=</span><span class="fl">0.05</span>, <span class="dt">i=</span><span class="fl">0.045</span>, <span class="dt">data =</span> CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>) <span class="co">#Actuarial present value of a varying life annuity that follows an arithmetic progression</span></a>
+<a class="sourceLine" id="cb3-2" title="2">AnnualPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">45</span>, <span class="dt">m=</span><span class="dv">7</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.045</span>,<span class="dt">data=</span> CSO80FALB) <span class="co">#Annual premium to be paid at the beginning of each year of the deferral term. </span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">V_av</span>(<span class="dt">px=</span> AnnualPrem, <span class="dt">x=</span><span class="dv">45</span>, <span class="dt">h=</span><span class="dv">7</span>, <span class="dt">n=</span><span class="dv">13</span>, <span class="dt">r=</span><span class="fl">0.05</span>, <span class="dt">cantprem =</span> <span class="dv">7</span>, <span class="dt">premperyear =</span> <span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.045</span>, <span class="dt">data=</span> CSO80FALB, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">t=</span><span class="dv">20</span>) <span class="co">#Reserve of the coverage up to the year 20</span></a></code></pre></div>
+<pre><code>##          Premium  Risk      1/E   Reserve
+## Year 1  17228.44     0 1.048860  18070.22
+## Year 2  17228.44     0 1.049113  37032.26
+## Year 3  17228.44     0 1.049397  56941.01
+## Year 4  17228.44     0 1.049703  77855.87
+## Year 5  17228.44     0 1.050030  99841.34
+## Year 6  17228.44     0 1.050388 122968.75
+## Year 7  17228.44     0 1.050779 147316.30
+## Year 8      0.00 12000 1.051223 142247.64
+## Year 9      0.00 12600 1.051710 136351.71
+## Year 10     0.00 13200 1.052208 129581.17
+## Year 11     0.00 13800 1.052716 121884.73
+## Year 12     0.00 14400 1.053215 113204.54
+## Year 13     0.00 15000 1.053693 103477.43
+## Year 14     0.00 15600 1.054171  92637.87
+## Year 15     0.00 16200 1.054703  80619.27
+## Year 16     0.00 16800 1.055342  67351.18
+## Year 17     0.00 17400 1.056132  52755.02
+## Year 18     0.00 18000 1.057147  36741.15
+## Year 19     0.00 18600 1.058367  19200.00
+## Year 20     0.00 19200 1.059752      0.00</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">Prem&lt;-<span class="st"> </span><span class="kw">Avg.</span>(<span class="dt">x=</span><span class="dv">24</span>, <span class="dt">h=</span><span class="dv">10</span>,<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">r=</span><span class="fl">0.06</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">cap=</span> <span class="dv">100000</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;inter&quot;</span>) <span class="co">#Actuarial present value of a varying life insurance according to a geometric progression</span></a>
+<a class="sourceLine" id="cb5-2" title="2">AnnualPrem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">24</span>, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">i=</span><span class="fl">0.03</span>) <span class="co">#Annual premium to be paid at the beginning of each year of the deferral term </span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">V_Avg.</span>(<span class="dt">px =</span>AnnualPrem, <span class="dt">x=</span><span class="dv">24</span>, <span class="dt">h=</span><span class="dv">10</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">r=</span><span class="fl">0.06</span>, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">data=</span> CSO80MALB, <span class="dt">cantprem =</span> <span class="dv">10</span>, <span class="dt">premperyear =</span> <span class="dv">1</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;inter&quot;</span>, <span class="dt">cap=</span><span class="dv">100000</span>, <span class="dt">t=</span><span class="dv">240</span>) <span class="co">#Reserve of the coverage up to the month 240</span></a></code></pre></div>
+<pre><code>##            Premium     Risk      1/E  Reserve
 ## Month 1   272.8966  0.00000 1.002617  273.611
 ## Month 2     0.0000  0.00000 1.002617  274.327
 ## Month 3     0.0000  0.00000 1.002617  275.044
@@ -649,10 +642,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## Month 238   0.0000 56.49135 1.002804  113.300
 ## Month 239   0.0000 56.64975 1.002804   56.809
 ## Month 240   0.0000 56.80861 1.002804    0.000</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Prem&lt;-<span class="st"> </span><span class="kw">A.</span>(<span class="dt">x=</span><span class="dv">40</span>, <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">15</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">data=</span> CSO80FANB, <span class="dt">cap=</span><span class="dv">105000</span>) <span class="co">#Actuarial present value of the life insurance</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>AnnualizedPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">40</span>, <span class="dt">m=</span><span class="dv">15</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">data=</span> CSO80FANB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>) <span class="co">#Annualized value of the premium to be paid four time a year. </span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">V_A.</span>(<span class="dt">px =</span> AnnualizedPrem<span class="op">/</span><span class="dv">4</span>, <span class="dt">x=</span><span class="dv">40</span>, <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">15</span>, <span class="dt">cantprem =</span> <span class="dv">60</span>, <span class="dt">premperyear =</span> <span class="dv">4</span>, <span class="dt">data=</span>CSO80FANB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">t=</span> <span class="dv">180</span>, <span class="dt">cap=</span><span class="dv">105000</span>)  <span class="co">#Reserve of the coverage up to the month 180</span></span></code></pre></div>
-<pre><code>##            Premium     Risk        E Reserve
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">Prem&lt;-<span class="st"> </span><span class="kw">A.</span>(<span class="dt">x=</span><span class="dv">40</span>, <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">15</span>, <span class="dt">k=</span><span class="dv">1</span>, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">data=</span> CSO80FANB, <span class="dt">cap=</span><span class="dv">105000</span>) <span class="co">#Actuarial present value of the life insurance</span></a>
+<a class="sourceLine" id="cb7-2" title="2">AnnualizedPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">40</span>, <span class="dt">m=</span><span class="dv">15</span>, <span class="dt">k=</span><span class="dv">4</span>, <span class="dt">data=</span> CSO80FANB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>) <span class="co">#Annualized value of the premium to be paid four time a year. </span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">V_A.</span>(<span class="dt">px =</span> AnnualizedPrem<span class="op">/</span><span class="dv">4</span>, <span class="dt">x=</span><span class="dv">40</span>, <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">n=</span><span class="dv">15</span>, <span class="dt">cantprem =</span> <span class="dv">60</span>, <span class="dt">premperyear =</span> <span class="dv">4</span>, <span class="dt">data=</span>CSO80FANB, <span class="dt">i=</span><span class="fl">0.06</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>, <span class="dt">t=</span> <span class="dv">180</span>, <span class="dt">cap=</span><span class="dv">105000</span>)  <span class="co">#Reserve of the coverage up to the month 180</span></a></code></pre></div>
+<pre><code>##            Premium     Risk      1/E Reserve
 ## Month 1   98.91566 19.97642 1.005070  79.339
 ## Month 2    0.00000 20.07770 1.005070  59.562
 ## Month 3    0.00000 20.17950 1.005070  39.582
@@ -833,10 +826,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## Month 178 98.91566 57.28507 1.005424 115.192
 ## Month 179  0.00000 57.59579 1.005424  57.908
 ## Month 180  0.00000 57.90821 1.005425   0.000</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>Prem&lt;-<span class="st"> </span><span class="kw">aD</span>(<span class="dt">x=</span><span class="dv">20</span>, <span class="dt">h=</span><span class="dv">5</span>, <span class="dt">n=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">2</span>, <span class="dt">i=</span><span class="fl">0.055</span>, <span class="dt">data=</span> CSO80MANB, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;intra&quot;</span>, <span class="dt">cap=</span><span class="dv">12000</span>) <span class="co">#Actuarial present value of a decreasing life annuity</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>Annualized_Prem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">20</span>, <span class="dt">m=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">12</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">data=</span>CSO80MANB, <span class="dt">i=</span><span class="fl">0.055</span>) <span class="co">#Annualized value of the premium to be paid monthly</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="kw">V_aD</span>(<span class="dt">px=</span> Annualized_Prem<span class="op">/</span><span class="dv">12</span> ,<span class="dt">x=</span><span class="dv">20</span>,<span class="dt">h=</span><span class="dv">5</span>,<span class="dt">n=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">2</span>, <span class="dt">premperyear =</span> <span class="dv">12</span>, <span class="dt">cantprem =</span> <span class="dv">60</span>, <span class="dt">i=</span><span class="fl">0.055</span>, <span class="dt">data=</span> CSO80MANB, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;intra&quot;</span>, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">t=</span><span class="dv">120</span>) <span class="co">#Reserve up to the month 120</span></span></code></pre></div>
-<pre><code>##            Premium  Risk        E    Reserve
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">Prem&lt;-<span class="st"> </span><span class="kw">aD</span>(<span class="dt">x=</span><span class="dv">20</span>, <span class="dt">h=</span><span class="dv">5</span>, <span class="dt">n=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">2</span>, <span class="dt">i=</span><span class="fl">0.055</span>, <span class="dt">data=</span> CSO80MANB, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;intra&quot;</span>, <span class="dt">cap=</span><span class="dv">12000</span>) <span class="co">#Actuarial present value of a decreasing life annuity</span></a>
+<a class="sourceLine" id="cb9-2" title="2">Annualized_Prem&lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Prem, <span class="dt">x=</span><span class="dv">20</span>, <span class="dt">m=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">12</span>, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">data=</span>CSO80MANB, <span class="dt">i=</span><span class="fl">0.055</span>) <span class="co">#Annualized value of the premium to be paid monthly</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="kw">V_aD</span>(<span class="dt">px=</span> Annualized_Prem<span class="op">/</span><span class="dv">12</span> ,<span class="dt">x=</span><span class="dv">20</span>,<span class="dt">h=</span><span class="dv">5</span>,<span class="dt">n=</span><span class="dv">5</span>, <span class="dt">k=</span><span class="dv">2</span>, <span class="dt">premperyear =</span> <span class="dv">12</span>, <span class="dt">cantprem =</span> <span class="dv">60</span>, <span class="dt">i=</span><span class="fl">0.055</span>, <span class="dt">data=</span> CSO80MANB, <span class="dt">assumption =</span> <span class="st">&quot;constant&quot;</span>, <span class="dt">variation =</span> <span class="st">&quot;intra&quot;</span>, <span class="dt">cap=</span><span class="dv">12000</span>, <span class="dt">t=</span><span class="dv">120</span>) <span class="co">#Reserve up to the month 120</span></a></code></pre></div>
+<pre><code>##            Premium  Risk      1/E    Reserve
 ## Month 1   4392.886     0 1.004515   4412.718
 ## Month 2   4392.886     0 1.004535   8845.539
 ## Month 3   4392.886     0 1.004556  13298.738
@@ -957,6 +950,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## Month 118    0.000     0 1.004690      0.000
 ## Month 119    0.000     0 1.004712      0.000
 ## Month 120    0.000     0 1.004734      0.000</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">ages&lt;-<span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">34</span>,<span class="dv">36</span>,<span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb11-2" title="2">Px&lt;-<span class="kw">Am.</span>(<span class="dt">x=</span>ages,<span class="dt">h=</span><span class="dv">5</span>,<span class="dt">n=</span><span class="dv">30</span>,<span class="dt">i=</span><span class="fl">0.06</span>,<span class="dt">data=</span>CSO80MANB,<span class="dt">ndeath=</span><span class="dv">2</span>,<span class="dt">cap=</span><span class="dv">200000</span>) <span class="co">#Actuarial present value of a life insurnace for a group to be paid when the second death occur.</span></a>
+<a class="sourceLine" id="cb11-3" title="3">Px<span class="op">/</span><span class="kw">am</span>(<span class="dt">x=</span>ages,<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">n=</span><span class="dv">5</span>,<span class="dt">i=</span><span class="fl">0.06</span>,<span class="dt">data=</span>CSO80MANB,<span class="dt">type=</span><span class="st">&quot;atleast&quot;</span>,<span class="dt">quant=</span><span class="dv">3</span>) <span class="co">#Annual premium to be paid when at least 3 of the group are still alive</span></a></code></pre></div>
+<pre><code>## [1] 5065.443</code></pre>
 </div>
 <div id="life-tables" class="section level2">
 <h2>Life tables</h2>
@@ -971,7 +968,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p><code>Fractional_table(data, frac, i = 0.04, assumption = &quot;UDD&quot;)</code></p>
 <div id="examples-1" class="section level4">
 <h4>Examples</h4>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">Table_Gompertz</span>(<span class="dt">x0=</span><span class="dv">0</span>, <span class="dt">omega=</span><span class="dv">100</span>, <span class="dt">B=</span><span class="fl">0.00008</span>, <span class="dt">C=</span> <span class="fl">1.07</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">Table_Gompertz</span>(<span class="dt">x0=</span><span class="dv">0</span>, <span class="dt">omega=</span><span class="dv">100</span>, <span class="dt">B=</span><span class="fl">0.00008</span>, <span class="dt">C=</span> <span class="fl">1.07</span>)</a></code></pre></div>
 <pre><code>##      x            q
 ## 1    0 8.276500e-05
 ## 2    1 8.855830e-05
@@ -1073,12 +1070,12 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 98  97 5.694070e-02
 ## 99  98 6.080293e-02
 ## 100 99 1.000000e+00</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>MortTable&lt;-<span class="kw">Table_Moivre</span>(<span class="dv">0</span>,<span class="dv">100</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>Px&lt;-<span class="st"> </span><span class="kw">A.</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">n=</span><span class="dv">20</span>,<span class="dt">i=</span><span class="fl">0.03</span>,<span class="dt">data=</span> MortTable, <span class="dt">cap=</span><span class="dv">10000</span>) <span class="op">+</span><span class="st"> </span><span class="kw">E</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">n=</span><span class="dv">20</span>, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">data=</span>MortTable, <span class="dt">cap=</span><span class="dv">10000</span>) <span class="co">#A Dotal (endowment) coverage</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>AnnualPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Px, <span class="dt">x=</span><span class="dv">35</span>, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">6</span>, <span class="dt">data=</span> MortTable, <span class="dt">effect =</span> <span class="st">&quot;yes&quot;</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>) <span class="co">#The annualized value of the premium</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>AnnualPrem<span class="op">/</span><span class="dv">6</span> <span class="co">#The premium to be paid every two months</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">MortTable&lt;-<span class="kw">Table_Moivre</span>(<span class="dv">0</span>,<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb15-2" title="2">Px&lt;-<span class="st"> </span><span class="kw">A.</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">n=</span><span class="dv">20</span>,<span class="dt">i=</span><span class="fl">0.03</span>,<span class="dt">data=</span> MortTable, <span class="dt">cap=</span><span class="dv">10000</span>) <span class="op">+</span><span class="st"> </span><span class="kw">E</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">n=</span><span class="dv">20</span>, <span class="dt">i=</span><span class="fl">0.03</span>, <span class="dt">data=</span>MortTable, <span class="dt">cap=</span><span class="dv">10000</span>) <span class="co">#A Dotal (endowment) coverage</span></a>
+<a class="sourceLine" id="cb15-3" title="3">AnnualPrem&lt;-<span class="kw">PremiumFrac</span>(<span class="dt">px1 =</span> Px, <span class="dt">x=</span><span class="dv">35</span>, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">k=</span><span class="dv">6</span>, <span class="dt">data=</span> MortTable, <span class="dt">effect =</span> <span class="st">&quot;yes&quot;</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>) <span class="co">#The annualized value of the premium</span></a>
+<a class="sourceLine" id="cb15-4" title="4">AnnualPrem<span class="op">/</span><span class="dv">6</span> <span class="co">#The premium to be paid every two months</span></a></code></pre></div>
 <pre><code>## [1] 132.2875</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">Fractional_table</span>(CSO58MANB, <span class="dt">frac=</span><span class="dv">3</span>, <span class="dt">i=</span> <span class="fl">0.047</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">Fractional_table</span>(CSO58MANB, <span class="dt">frac=</span><span class="dv">3</span>, <span class="dt">i=</span> <span class="fl">0.047</span>, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>)</a></code></pre></div>
 <pre><code>##              X            Q
 ## 1    0.0000000 0.0023600000
 ## 2    0.3333333 0.0023655828
@@ -1385,7 +1382,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="loan-amortization" class="section level2">
 <h2>Loan Amortization</h2>
 <p><code>Loan_amortization(V0, n, i, i2 = 0, alic = 0, ins = 0, method)</code> For calculating the loan amortization schedule.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">130000</span>,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">i=</span><span class="fl">0.04</span>,<span class="dt">method =</span> <span class="st">&quot;interest_only&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">130000</span>,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">i=</span><span class="fl">0.04</span>,<span class="dt">method =</span> <span class="st">&quot;interest_only&quot;</span>)</a></code></pre></div>
 <pre><code>##    Period Payment  Int TAX  Amort Insurance Outstanding_debt
 ## 1       0       0    0   0      0         0           130000
 ## 2       1    5200 5200   0      0         0           130000
@@ -1403,7 +1400,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 14     13    5200 5200   0      0         0           130000
 ## 15     14    5200 5200   0      0         0           130000
 ## 16     15  135200 5200   0 130000         0                0</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">123000</span>,<span class="dt">n=</span><span class="dv">12</span>,<span class="dt">i=</span><span class="fl">0.06</span>,<span class="dt">alic=</span><span class="fl">0.21</span>,<span class="dt">method=</span><span class="st">&quot;constant_installment&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">123000</span>,<span class="dt">n=</span><span class="dv">12</span>,<span class="dt">i=</span><span class="fl">0.06</span>,<span class="dt">alic=</span><span class="fl">0.21</span>,<span class="dt">method=</span><span class="st">&quot;constant_installment&quot;</span>)</a></code></pre></div>
 <pre><code>##    Period  Payment Pure_Payment       Int     Amort       TAX Insurance
 ## 1       0     0.00         0.00    0.0000     0.000    0.0000         0
 ## 2       1 16220.87     14671.07 7380.0000  7291.075 1549.8000         0
@@ -1432,7 +1429,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 11     2.689784e+04
 ## 12     1.384064e+04
 ## 13     3.074092e-10</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">300000</span>,<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">i=</span><span class="fl">0.03</span>,<span class="dt">ins=</span><span class="fl">0.01</span>,<span class="dt">method =</span> <span class="st">&quot;constant_principal&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">Loan_amortization</span>(<span class="dt">V0=</span><span class="dv">300000</span>,<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">i=</span><span class="fl">0.03</span>,<span class="dt">ins=</span><span class="fl">0.01</span>,<span class="dt">method =</span> <span class="st">&quot;constant_principal&quot;</span>)</a></code></pre></div>
 <pre><code>##    Period Payment Pure_Payment  Int Amort TAX Insurance Outstanding_debt
 ## 1       0       0            0    0     0   0         0           300000
 ## 2       1   42000        39000 9000 30000   0      3000           270000
@@ -1447,21 +1444,160 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 11     10   31200        30900  900 30000   0       300                0</code></pre>
 <p><code>Payment_Protection(x, n, k = 1, V0, i = 0.04, ip = 0.04, data, prop = 1, type = &quot;outstanding_debt&quot;, method = &quot;interest_only&quot;)</code> For calculating the actuarial present value of a loan insurance.</p>
 <p>If “outstanding_debt” is chosen, the insurance company pays the outstanding debt at the moment of the next theoretical payment. If “payments” is selected, the company takes responsibility for the payment of each installment at each accorded moment.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">Payment_Protection</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">V0=</span><span class="dv">1050000</span>,<span class="dt">i=</span><span class="fl">0.05</span>,<span class="dt">ip=</span><span class="fl">0.055</span>,<span class="dt">data=</span>CSO58MALB,<span class="dt">type=</span><span class="st">&quot;outstanding_debt&quot;</span>,<span class="dt">method=</span><span class="st">&quot;constant_principal&quot;</span>) <span class="co">#Actuarial present value of the coverage</span></span></code></pre></div>
-<pre><code>## [1] 24146.45</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">Payment_Protection</span>(<span class="dt">x=</span><span class="dv">30</span>,<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">k=</span><span class="dv">2</span>,<span class="dt">V0=</span><span class="dv">1000000</span>,<span class="dt">i=</span><span class="fl">0.035</span>,<span class="dt">ip=</span><span class="fl">0.06</span>,<span class="dt">data=</span>CSO80FANB,<span class="dt">type=</span><span class="st">&quot;payments&quot;</span>,<span class="dt">method=</span><span class="st">&quot;constant_instalment&quot;</span>) <span class="co">#actuarial present value of the coverage</span></span></code></pre></div>
-<pre><code>## [1] 8491.652</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">Px1&lt;-<span class="kw">Payment_Protection</span>(<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">V0=</span><span class="dv">1050000</span>,<span class="dt">i=</span><span class="fl">0.05</span>,<span class="dt">ip=</span><span class="fl">0.055</span>,<span class="dt">data=</span>CSO58MALB,<span class="dt">type=</span><span class="st">&quot;outstanding_debt&quot;</span>,<span class="dt">method=</span><span class="st">&quot;constant_principal&quot;</span>) <span class="co">#Actuarial present value of the coverage</span></a>
+<a class="sourceLine" id="cb25-2" title="2">Annual_Px1 &lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(<span class="dt">px1=</span>Px1,<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">m=</span><span class="dv">5</span>, <span class="dt">k =</span> <span class="dv">1</span>,<span class="dt">i=</span><span class="fl">0.05</span>,<span class="dt">data=</span>CSO58MALB) <span class="co">#Annual Premium to be paid</span></a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="kw">V_Payment_Protection</span>(<span class="dt">px=</span>Annual_Px1,<span class="dt">x=</span><span class="dv">35</span>,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">k=</span><span class="dv">1</span>,<span class="dt">cantprem=</span><span class="dv">5</span>,<span class="dt">premperyear=</span><span class="dv">1</span>,<span class="dt">i=</span><span class="fl">0.05</span>,<span class="dt">ip=</span><span class="fl">0.055</span>,<span class="dt">data =</span>CSO58MALB, <span class="dt">type=</span><span class="st">&quot;outstanding_debt&quot;</span>,<span class="dt">method=</span><span class="st">&quot;constant_principal&quot;</span>,<span class="dt">V0=</span><span class="dv">1050000</span>,<span class="dt">t=</span><span class="dv">15</span>) <span class="co">#Reserve uo to the year 15</span></a></code></pre></div>
+<pre><code>##          Premium      Risk      1/E   Reserve
+## Year 1  5339.352 2716.6250 1.052711  2760.973
+## Year 2  5339.352 2678.1949 1.052864  5708.765
+## Year 3  5339.352 2656.0469 1.053059  8837.345
+## Year 4  5339.352 2641.4668 1.053297 12150.018
+## Year 5  5339.352 2622.5753 1.053571 15663.230
+## Year 6     0.000 2591.6427 1.053883 13775.928
+## Year 7     0.000 2535.0384 1.054222 11850.393
+## Year 8     0.000 2447.3749 1.054587  9916.301
+## Year 9     0.000 2326.0288 1.054984  8007.618
+## Year 10    0.000 2166.7590 1.055419  6164.553
+## Year 11    0.000 1965.6057 1.055902  4433.677
+## Year 12    0.000 1714.4735 1.056438  2872.670
+## Year 13    0.000 1404.0151 1.057034  1552.417
+## Year 14    0.000 1023.1953 1.057694   559.755
+## Year 15    0.000  559.7549 1.058424     0.000</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">Px1 &lt;-<span class="st"> </span><span class="kw">Payment_Protection</span>(<span class="dt">x=</span><span class="dv">30</span>,<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">k=</span><span class="dv">2</span>,<span class="dt">V0=</span><span class="dv">1000000</span>,<span class="dt">i=</span><span class="fl">0.035</span>,<span class="dt">ip=</span><span class="fl">0.06</span>,<span class="dt">data=</span>CSO80FANB,<span class="dt">type=</span><span class="st">&quot;payments&quot;</span>,<span class="dt">method=</span><span class="st">&quot;constant_instalment&quot;</span>) <span class="co">#Actuarial present value of the coverage</span></a>
+<a class="sourceLine" id="cb27-2" title="2">Annual_Px1 &lt;-<span class="st"> </span><span class="kw">PremiumFrac</span>(<span class="dt">px1=</span>Px1,<span class="dt">x=</span><span class="dv">30</span>,<span class="dt">m=</span><span class="dv">3</span>, <span class="dt">k =</span> <span class="dv">6</span>,<span class="dt">i=</span><span class="fl">0.035</span>,<span class="dt">data=</span>CSO80FANB, <span class="dt">assumption =</span> <span class="st">&quot;UDD&quot;</span>) <span class="co">#Annualized value of the premium to be paid every two months</span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="kw">V_Payment_Protection</span>(<span class="dt">px=</span>Annual_Px1<span class="op">/</span><span class="dv">6</span>,<span class="dt">x=</span><span class="dv">30</span>,<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">k=</span><span class="dv">2</span>,<span class="dt">cantprem=</span><span class="dv">18</span>,<span class="dt">premperyear=</span><span class="dv">6</span>,<span class="dt">i=</span><span class="fl">0.035</span>,<span class="dt">ip=</span><span class="fl">0.06</span>,<span class="dt">data =</span>CSO80FANB, <span class="dt">type=</span><span class="st">&quot;payments&quot;</span>,<span class="dt">method=</span><span class="st">&quot;constant_instalment&quot;</span>,<span class="dt">V0=</span><span class="dv">1000000</span>,<span class="dt">t=</span><span class="dv">120</span>) <span class="co">#Reserve up to the month 120</span></a></code></pre></div>
+<pre><code>##           Premium      Risk      1/E  Reserve
+## Month 1   496.049 126.35553 1.002984  370.796
+## Month 2     0.000 126.73255 1.002984  244.792
+## Month 3   496.049 127.11068 1.002984  615.562
+## Month 4     0.000 127.48995 1.002984  489.528
+## Month 5   496.049 127.87035 1.002984  860.266
+## Month 6     0.000 128.25189 1.002984  734.198
+## Month 7   496.049 121.09823 1.002984 1112.458
+## Month 8     0.000 121.45957 1.002984  993.956
+## Month 9   496.049 121.82198 1.002984 1372.265
+## Month 10    0.000 122.18548 1.002984 1253.810
+## Month 11  496.049 122.55006 1.002984 1632.164
+## Month 12    0.000 122.91573 1.002984 1513.752
+## Month 13  496.049 119.86573 1.002988 1895.582
+## Month 14    0.000 120.22388 1.002988 1780.663
+## Month 15  496.049 120.58310 1.002988 2162.571
+## Month 16    0.000 120.94340 1.002988 2047.728
+## Month 17  496.049 121.30477 1.002988 2429.710
+## Month 18    0.000 121.66723 1.002988 2314.940
+## Month 19  496.049 114.21511 1.002988 2704.831
+## Month 20    0.000 114.55639 1.002988 2598.015
+## Month 21  496.049 114.89868 1.002988 2988.067
+## Month 22    0.000 115.24200 1.002988 2881.409
+## Month 23  496.049 115.58635 1.002988 3271.618
+## Month 24    0.000 115.93173 1.002988 3165.116
+## Month 25  496.049 112.17320 1.002992 3559.611
+## Month 26    0.000 112.50884 1.002992 3457.416
+## Month 27  496.049 112.84548 1.002992 3852.111
+## Month 28    0.000 113.18312 1.002992 3750.115
+## Month 29  496.049 113.52178 1.002992 4145.008
+## Month 30    0.000 113.86146 1.002992 4043.208
+## Month 31  496.049 106.10716 1.002992 4446.415
+## Month 32    0.000 106.42465 1.002992 4352.976
+## Month 33  496.049 106.74310 1.002992 4756.472
+## Month 34    0.000 107.06249 1.002992 4663.322
+## Month 35  496.049 107.38285 1.002992 5067.104
+## Month 36    0.000 107.70417 1.002992 4974.240
+## Month 37    0.000 103.22140 1.002996 4885.614
+## Month 38    0.000 103.53068 1.002996 4796.411
+## Month 39    0.000 103.84089 1.002996 4706.631
+## Month 40    0.000 104.15202 1.002996 4616.269
+## Month 41    0.000 104.46410 1.002996 4525.324
+## Month 42    0.000 104.77711 1.002996 4433.793
+## Month 43    0.000  96.71672 1.002996 4350.071
+## Month 44    0.000  97.00652 1.002996 4265.809
+## Month 45    0.000  97.29719 1.002996 4181.002
+## Month 46    0.000  97.58873 1.002996 4095.649
+## Month 47    0.000  97.88115 1.002996 4009.747
+## Month 48    0.000  98.17444 1.002996 3923.293
+## Month 49    0.000  94.75034 1.003003 3840.040
+## Month 50    0.000  95.03487 1.003003 3756.251
+## Month 51    0.000  95.32026 1.003003 3671.924
+## Month 52    0.000  95.60651 1.003003 3587.058
+## Month 53    0.000  95.89362 1.003003 3501.648
+## Month 54    0.000  96.18159 1.003003 3415.693
+## Month 55    0.000  87.64910 1.003003 3338.039
+## Month 56    0.000  87.91232 1.003003 3259.887
+## Month 57    0.000  88.17633 1.003003 3181.235
+## Month 58    0.000  88.44113 1.003003 3102.082
+## Month 59    0.000  88.70673 1.003003 3022.425
+## Month 60    0.000  88.97313 1.003003 2942.262
+## Month 61    0.000  83.84191 1.003009 2867.020
+## Month 62    0.000  84.09417 1.003009 2791.299
+## Month 63    0.000  84.34720 1.003009 2715.097
+## Month 64    0.000  84.60098 1.003009 2638.411
+## Month 65    0.000  84.85554 1.003009 2561.239
+## Month 66    0.000  85.11086 1.003009 2483.578
+## Month 67    0.000  76.15449 1.003009 2414.667
+## Month 68    0.000  76.38363 1.003009 2345.320
+## Month 69    0.000  76.61347 1.003009 2275.533
+## Month 70    0.000  76.84399 1.003009 2205.304
+## Month 71    0.000  77.07522 1.003009 2134.633
+## Month 72    0.000  77.30713 1.003009 2063.516
+## Month 73    0.000  72.75408 1.003018 1996.770
+## Month 74    0.000  72.97366 1.003018 1929.603
+## Month 75    0.000  73.19389 1.003018 1862.012
+## Month 76    0.000  73.41479 1.003018 1793.995
+## Month 77    0.000  73.63637 1.003018 1725.551
+## Month 78    0.000  73.85861 1.003018 1656.677
+## Month 79    0.000  64.25436 1.003018 1597.229
+## Month 80    0.000  64.44828 1.003018 1537.407
+## Month 81    0.000  64.64280 1.003018 1477.209
+## Month 82    0.000  64.83790 1.003018 1416.634
+## Month 83    0.000  65.03360 1.003018 1355.680
+## Month 84    0.000  65.22988 1.003018 1294.345
+## Month 85    0.000  59.59202 1.003029 1238.493
+## Month 86    0.000  59.77251 1.003029 1182.291
+## Month 87    0.000  59.95356 1.003029 1125.736
+## Month 88    0.000  60.13515 1.003029 1068.829
+## Month 89    0.000  60.31730 1.003029 1011.566
+## Month 90    0.000  60.50000 1.003029  953.947
+## Month 91    0.000  50.12953 1.003029  906.555
+## Month 92    0.000  50.28137 1.003029  858.868
+## Month 93    0.000  50.43368 1.003029  810.883
+## Month 94    0.000  50.58645 1.003029  762.599
+## Month 95    0.000  50.73968 1.003029  714.016
+## Month 96    0.000  50.89337 1.003029  665.131
+## Month 97    0.000  43.61424 1.003041  623.407
+## Month 98    0.000  43.74689 1.003041  581.424
+## Month 99    0.000  43.87994 1.003041  539.179
+## Month 100   0.000  44.01340 1.003042  496.671
+## Month 101   0.000  44.14727 1.003042  453.900
+## Month 102   0.000  44.28154 1.003042  410.865
+## Month 103   0.000  33.02405 1.003042  378.990
+## Month 104   0.000  33.12450 1.003042  346.917
+## Month 105   0.000  33.22525 1.003042  314.646
+## Month 106   0.000  33.32631 1.003042  282.176
+## Month 107   0.000  33.42768 1.003042  249.504
+## Month 108   0.000  33.52936 1.003042  216.632
+## Month 109   0.000  24.13943 1.003056  193.081
+## Month 110   0.000  24.21321 1.003056  169.384
+## Month 111   0.000  24.28722 1.003057  145.540
+## Month 112   0.000  24.36145 1.003057  121.549
+## Month 113   0.000  24.43592 1.003057   97.410
+## Month 114   0.000  24.51061 1.003057   73.122
+## Month 115   0.000  12.18704 1.003057   61.121
+## Month 116   0.000  12.22430 1.003057   49.047
+## Month 117   0.000  12.26166 1.003057   36.897
+## Month 118   0.000  12.29914 1.003057   24.673
+## Month 119   0.000  12.33674 1.003057   12.374
+## Month 120   0.000  12.37445 1.003057    0.000</code></pre>
 </div>
 <div id="annuities-and-interest-rates" class="section level2">
 <h2>Annuities and Interest Rates</h2>
 <p><code>sf(l = 0, n, i)</code> For calculating the final value of an annuity</p>
 <p><code>af(l = 0, n, i)</code> For calculating the present value of an annuity</p>
 <p><code>Rate_converter(num, rate1, m, rate2, k, type = &quot;days&quot;)</code> For converting nominal and effective interest and discount rates.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>i&lt;-<span class="kw">Rate_converter</span>(<span class="fl">0.4</span>,<span class="st">&quot;j&quot;</span>,<span class="dv">60</span>,<span class="st">&quot;i&quot;</span>,<span class="dv">365</span>, <span class="st">&quot;days&quot;</span>) <span class="co">#Convert the annual nominal rate of 2 periods to a effective annual interest rate</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="kw">af</span>(<span class="dv">0</span>,<span class="dv">20</span>,i)<span class="op">*</span><span class="dv">1200</span> <span class="co"># Calculate the present value of an annuity-due of amount $1200 paid annually for 20 years at the rate of interest of i.</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">i&lt;-<span class="kw">Rate_converter</span>(<span class="fl">0.4</span>,<span class="st">&quot;j&quot;</span>,<span class="dv">60</span>,<span class="st">&quot;i&quot;</span>,<span class="dv">365</span>, <span class="st">&quot;days&quot;</span>) <span class="co">#Convert the annual nominal rate of 2 periods to a effective annual interest rate</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">af</span>(<span class="dv">0</span>,<span class="dv">20</span>,i)<span class="op">*</span><span class="dv">1200</span> <span class="co"># Calculate the present value of an annuity-due of amount $1200 paid annually for 20 years at the rate of interest of i.</span></a></code></pre></div>
 <pre><code>## [1] 3734.614</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>i&lt;-<span class="kw">Rate_converter</span>(<span class="fl">0.07</span>,<span class="st">&quot;f&quot;</span>,<span class="dv">4</span>,<span class="st">&quot;i&quot;</span>,<span class="dv">1</span>, <span class="st">&quot;frac&quot;</span>) <span class="co">#Convert the annual nominal discount rate of 4 periods to a effective annual  interest rate</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="kw">sf</span>(<span class="dv">1</span>,<span class="dv">10</span>,i)<span class="op">*</span><span class="dv">3000</span> <span class="co"># Calculate the final value of an annuity-immediate of amount $3000 paid annually for 20 years at the rate of interest of i.</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">i&lt;-<span class="kw">Rate_converter</span>(<span class="fl">0.07</span>,<span class="st">&quot;f&quot;</span>,<span class="dv">4</span>,<span class="st">&quot;i&quot;</span>,<span class="dv">1</span>, <span class="st">&quot;frac&quot;</span>) <span class="co">#Convert the annual nominal discount rate of 4 periods to a effective annual  interest rate</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="kw">sf</span>(<span class="dv">1</span>,<span class="dv">10</span>,i)<span class="op">*</span><span class="dv">3000</span> <span class="co"># Calculate the final value of an annuity-immediate of amount $3000 paid annually for 20 years at the rate of interest of i.</span></a></code></pre></div>
 <pre><code>## [1] 42075.79</code></pre>
 </div>
 

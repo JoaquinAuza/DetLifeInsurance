@@ -50,12 +50,12 @@ V_aD<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumpti
           res<-(res+prem-risk)*(E(x+j-1,1,i,data,prop,"none",1))^(-1)
           e<-(E(x+j-1,1,i,data,prop,"none",1))^(-1)
           reserve<-rbind(reserve,c(prem,risk,e,round(res,3)))
-          rown<-c(rown,paste("Period",j))
+          rown<-c(rown,paste("Year",j))
         }
       } else{
-        stop("Check Period")
+        stop("Check Year")
       }
-      colnames(reserve)<-c("Premium","Risk","E","Reserve")
+      colnames(reserve)<-c("Premium","Risk","1/E","Reserve")
       rownames(reserve)<-rown
     }else if(k<=12){
       if(t<=(h+n)*12){
@@ -87,7 +87,7 @@ V_aD<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumpti
               frac<-1
             }
           }
-          colnames(reserve)<-c("Premium","Risk","E","Reserve")
+          colnames(reserve)<-c("Premium","Risk","1/E","Reserve")
           rownames(reserve)<-rown
         } else if(variation=="intra"){
           Premiums_Paid<-0
@@ -115,7 +115,7 @@ V_aD<-function(px,x,h,n,k=1,cantprem=1,premperyear=1,i=0.04,data,prop=1,assumpti
               frac<-1
             }
           }
-          colnames(reserve)<-c("Premium","Risk","E","Reserve")
+          colnames(reserve)<-c("Premium","Risk","1/E","Reserve")
           rownames(reserve)<-rown
         }else{
           stop("Check variation")
