@@ -58,8 +58,8 @@ am<-function(x,h,n,k=1,i=0.04,data,prop=1,type="joint",quant=1,assumption="none"
         amxhn<-0
         for(g1 in quant:length(x)){
           amxhn_partial<-0
-          coeff<-ncol(combn(g1,(g1-quant)))*(-1)^(g1-quant)
-          combinations<-combn(x,g1)
+          coeff<-ncol(utils::combn(g1,(g1-quant)))*(-1)^(g1-quant)
+          combinations<-utils::combn(x,g1)
           for(g2 in 1:ncol(combinations)){
             amxhn_partial<-amxhn_partial+am(combinations[,g2],h,n,k,i,data,prop,type="joint",quant,assumption,1)
           }
@@ -72,8 +72,8 @@ am<-function(x,h,n,k=1,i=0.04,data,prop=1,type="joint",quant=1,assumption="none"
         amxhn<-0
         for(g1 in quant:length(x)){
           amxhn_partial<-0
-          coeff<-ncol(combn(g1-1,(g1-quant)))*(-1)^(g1-quant)
-          combinations<-combn(x,g1)
+          coeff<-ncol(utils::combn(g1-1,(g1-quant)))*(-1)^(g1-quant)
+          combinations<-utils::combn(x,g1)
           for(g2 in 1:ncol(combinations)){
             amxhn_partial<-amxhn_partial+am(combinations[,g2],h,n,k,i,data,prop,type="joint",quant,assumption,1)
           }

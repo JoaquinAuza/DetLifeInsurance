@@ -70,8 +70,8 @@ Em<-function(x,n,i=0.04,data,prop=1,type="joint",quant=1,assumption="none",cap=1
         Emxn<-0
         for(g1 in quant:length(x)){
           Emxn_partial<-0
-          coeff<-ncol(combn(g1,(g1-quant)))*(-1)^(g1-quant)
-          combinations<-combn(x,g1)
+          coeff<-ncol(utils::combn(g1,(g1-quant)))*(-1)^(g1-quant)
+          combinations<-utils::combn(x,g1)
           for(g2 in 1:ncol(combinations)){
             Emxn_partial<-Emxn_partial+Em(combinations[,g2],n,i,data,prop,type="joint",quant,"none",1)
           }
@@ -97,8 +97,8 @@ Em<-function(x,n,i=0.04,data,prop=1,type="joint",quant=1,assumption="none",cap=1
             for(g1 in quant:length(x)){
               prob_sum_partial<-0
               prob_sum_partial_frac<-0
-              coeff<-ncol(combn(g1,(g1-quant)))*(-1)^(g1-quant)
-              combinations<-combn(x,g1)
+              coeff<-ncol(utils::combn(g1,(g1-quant)))*(-1)^(g1-quant)
+              combinations<-utils::combn(x,g1)
               for(g2 in 1:ncol(combinations)){
                 prob_sum_partial<-prob_sum_partial+JointSurvival(combinations[,g2],t,data,prop)
                 prob_sum_partial_frac<-prob_sum_partial+JointSurvival(combinations[,g2]+t,1,data,prop)
@@ -120,8 +120,8 @@ Em<-function(x,n,i=0.04,data,prop=1,type="joint",quant=1,assumption="none",cap=1
         Emxn<-0
         for(g1 in quant:length(x)){
           Emxn_partial<-0
-          coeff<-ncol(combn(g1-1,(g1-quant)))*(-1)^(g1-quant)
-          combinations<-combn(x,g1)
+          coeff<-ncol(utils::combn(g1-1,(g1-quant)))*(-1)^(g1-quant)
+          combinations<-utils::combn(x,g1)
           for(g2 in 1:ncol(combinations)){
             Emxn_partial<-Emxn_partial+Em(combinations[,g2],n,i,data,prop,type="joint",quant,"none",1)
           }
@@ -148,8 +148,8 @@ Em<-function(x,n,i=0.04,data,prop=1,type="joint",quant=1,assumption="none",cap=1
             for(g1 in quant:length(x)){
               prob_sum_partial<-0
               prob_sum_partial_frac<-0
-              coeff<-ncol(combn(g1-1,(g1-quant)))*(-1)^(g1-quant)
-              combinations<-combn(x,g1)
+              coeff<-ncol(utils::combn(g1-1,(g1-quant)))*(-1)^(g1-quant)
+              combinations<-utils::combn(x,g1)
               for(g2 in 1:ncol(combinations)){
                 prob_sum_partial<-prob_sum_partial+JointSurvival(combinations[,g2],t,data,prop)
                 prob_sum_partial_frac<-prob_sum_partial+JointSurvival(combinations[,g2]+t,1,data,prop)

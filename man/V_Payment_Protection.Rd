@@ -57,12 +57,9 @@ Returns the actuarial present value of the loan protection.
 Calculates the reserve for the loan insurance up to the moment t.
 }
 \examples{
-V_Payment_Protection(31.6216618772779,30,25,1,10,1,0.06,0.07,CSO80FANB,1,"payments","constant_instalment",10500,25)
-V_Payment_Protection(84.1875242640962,42,10,4,5,1,0.035,0.09,CSO2001FALBsmoker,1,"outstanding_debt","constant_instalment",22000,120)
-V_Payment_Protection(49.2545645254189,25,6,1,6,2,0.08,0.085,CSO2001MALBsmoker,1,"payments","interest_only",30000,72)
-V_Payment_Protection(70.121238325921,43,12,4,60,12,0.03,0.05,CSO80MALB,1,"outstanding_debt","interest_only",62000,144)
-V_Payment_Protection(506.481389018364,50,20,1,6,1,0.07,0.065,CSO80FANB,1,"payments","constant_principal",52100,20)
-V_Payment_Protection(30.049303786026,34,10,12,12,4,0.04,0.05,CSO2001MANBnonsmoker,1,"outstanding_debt","constant_principal",63200,120)
+px1<-31.6216618772779
+c1<-10500
+V_Payment_Protection(px1,30,25,1,10,1,0.06,0.07,CSO80FANB,1,"payments","constant_instalment",c1,25)
 
 }
 \keyword{Payment}
